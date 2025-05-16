@@ -1,123 +1,141 @@
 .product-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .best-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-  
-  .best-product {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-  
-  .best-image {
-    width: 300px;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .best-description h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .subheading {
-    color: gray;
-    margin: 0.3rem 0;
-  }
-  
-  .price {
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
-  .body {
-    font-size: 0.9rem;
-    margin-top: 1rem;
-  }
-  
-  .add-to-cart {
-    margin-top: 1rem;
-    padding: 0.5rem 1.5rem;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .fine-print {
-    font-size: 0.75rem;
-    color: gray;
-    margin-top: 0.5rem;
-  }
-  
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .tab-button {
-    background: none;
-    border: none;
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #888;
-  }
-  
-  .tab-button.active {
-    color: black;
-    border-bottom: 2px solid black;
-  }
-  
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-  
-  .product-card {
-    text-align: center;
-  }
-  
-  .product-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    margin-bottom: 0.5rem;
-  }
-  
-  .product-name {
-    font-size: 0.95rem;
-  }
-  
-  .product-price {
-    font-size: 0.9rem;
-    color: gray;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    color: #888;
-  }
-  
-  .pagination .active {
-    font-weight: bold;
-    color: black;
-  }
-  
+  padding-top: 100px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Best 제목 */
+.best-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+/* 캐러셀 */
+.carousel-multi {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 500%; /* 5개 상품 기준 */
+}
+
+.carousel-card {
+  flex: 0 0 20%; /* 100% / 5개 */
+  text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.carousel-card img {
+  width: 85%; /* 100% → 85%로 줄임 */
+  max-width: 220px; /* 혹시 너무 커지는 거 방지 */
+  margin: 0 auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.carousel-name {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.carousel-price {
+  color: #444;
+  font-size: 1rem;
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.carousel-buttons button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-buttons button.active {
+  background-color: black;
+}
+
+/* 탭 */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.tab-button.active {
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+/* 상품 그리드 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.product-name {
+  font-size: 0.95rem;
+}
+
+.product-price {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: #888;
+}
+
+.pagination .active {
+  font-weight: bold;
+  color: black;
+}

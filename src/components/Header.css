@@ -1,0 +1,57 @@
+.header {
+  position: fixed;           /* 스크롤해도 고정 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;             /* 다른 요소 위에 오도록 */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;        /* 필요시 0으로 줄여도 OK */
+  border-bottom: 1px solid #ddd;
+  background-color: white;   /* 고정 시 배경 비침 방지 */
+  font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 60px; /* 메뉴 간 간격 */
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 20px;
+  color: #222;
+  padding-top: 4px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.icons span {
+  display: inline-block;
+  font-family: 'Segoe UI Symbol', 'Apple Color Emoji', 'Noto Sans Symbols', sans-serif;
+  line-height: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.icons span:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
