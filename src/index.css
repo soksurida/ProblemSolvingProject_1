@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background: linear-gradient(to bottom, #fffaf0, #fef6e4); /* 부드럽게 밝은 베이지톤 그라데이션 */
+  background-attachment: fixed;
+  background-size: cover;
+}
