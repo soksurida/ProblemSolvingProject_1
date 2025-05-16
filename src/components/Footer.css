@@ -1,0 +1,54 @@
+.footer {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: #333;
+  margin-top: 60px;
+  padding: 40px 60px;
+  background-color: #f4f4f4;
+}
+
+.inquiry-box {
+  background-color: #eee;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inquiry-box h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.inquiry-btn {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  margin: 30px 0 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-info p {
+  margin: 6px 0;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 18px;
+}
