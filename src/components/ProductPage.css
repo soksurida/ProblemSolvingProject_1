@@ -1,11 +1,11 @@
 .product-container {
-  padding-top: 100px;
+  /* padding-top: 100px;
   padding-left: 2rem;
-  padding-right: 2rem;
+  padding-right: 2rem; */
   padding-bottom: 2rem;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
-  font-family: 'Arial', sans-serif;
+  /* font-family: 'Arial', sans-serif; */
 }
 
 /* Best 제목 */
