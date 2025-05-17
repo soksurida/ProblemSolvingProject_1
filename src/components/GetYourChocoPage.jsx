@@ -49,6 +49,7 @@ function GetYourChocoPage() {
           <button className="play-button" onClick={handlePlay}>Play</button>
         </div>
       )}
+
     </div>
   );
 }

@@ -1,11 +1,10 @@
 .product-container {
-  /* padding-top: 100px;
-  padding-left: 2rem;
-  padding-right: 2rem; */
+  padding-top: 100px;         /* ✅ 헤더 아래 여백 확보 */
+  padding-left: 0;            /* ✅ 좌우 여백 제거 */
+  padding-right: 0;           /* ✅ 좌우 여백 제거 */
   padding-bottom: 2rem;
-  /* max-width: 1200px; */
-  margin: 0 auto;
-  /* font-family: 'Arial', sans-serif; */
+  /* max-width, margin 제거해서 꽉 차게 */
+  font-family: 'Arial', sans-serif;
   background-color: #ffffff;
 }
 
@@ -139,4 +138,11 @@
 .pagination .active {
   font-weight: bold;
   color: black;
+}
+
+.product-page-wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }

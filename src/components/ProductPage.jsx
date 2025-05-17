@@ -60,7 +60,10 @@ const products = [
 const ProductPage = () => {
   const [selectedTab, setSelectedTab] = useState('전체');
   const [currentSlide, setCurrentSlide] = useState(0);
-  const filtered = selectedTab === '전체' ? products : products.filter(p => p.category === selectedTab);
+
+  const filtered = selectedTab === '전체'
+    ? products
+    : products.filter(p => p.category === selectedTab);
 
   // 자동 슬라이드
   useEffect(() => {
@@ -71,66 +74,67 @@ const ProductPage = () => {
   }, []);
 
   return (
-    <div className="product-container">
+    <div className="product-page-wrapper">
       <Header />
+      <div className="product-container">
+        <h1 className="best-title">Best</h1>
 
-      <h1 className="best-title">Best</h1>
+        <div className="carousel-multi">
+          <div
+            className="carousel-track"
+            style={{ transform: `translateX(-${currentSlide * 20}%)` }}
+          >
+            {bestProducts.map((product, index) => (
+              <div key={index} className="carousel-card">
+                <img src={product.image} alt={product.name} />
+                <p className="carousel-name">{product.name}</p>
+                <p className="carousel-price">{product.price}</p>
+              </div>
+            ))}
+          </div>
 
-      <div className="carousel-multi">
-        <div
-          className="carousel-track"
-          style={{ transform: `translateX(-${currentSlide * 20}%)` }}
-        >
-          {bestProducts.map((product, index) => (
-            <div key={index} className="carousel-card">
-              <img src={product.image} alt={product.name} />
-              <p className="carousel-name">{product.name}</p>
-              <p className="carousel-price">{product.price}</p>
+          <div className="carousel-buttons">
+            {Array.from({ length: bestProducts.length - 2 }).map((_, i) => (
+              <button
+                key={i}
+                className={i === currentSlide ? 'active' : ''}
+                onClick={() => setCurrentSlide(i)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="tabs">
+          {['전체', '국내제품', '수입제품'].map(tab => (
+            <button
+              key={tab}
+              onClick={() => setSelectedTab(tab)}
+              className={`tab-button ${selectedTab === tab ? 'active' : ''}`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="product-grid">
+          {filtered.map((product, index) => (
+            <div key={index} className="product-card">
+              <img src={product.image} alt={product.name} className="product-image" />
+              <p className="product-name">{product.name}</p>
+              <p className="product-price">{product.price}</p>
             </div>
           ))}
         </div>
 
-        <div className="carousel-buttons">
-          {Array.from({ length: bestProducts.length - 2 }).map((_, i) => (
-            <button
-              key={i}
-              className={i === currentSlide ? 'active' : ''}
-              onClick={() => setCurrentSlide(i)}
-            />
-          ))}
+        <div className="pagination">
+          <button>{'<<'}</button>
+          <button className="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>{'>>'}</button>
         </div>
       </div>
-
-      <div className="tabs">
-        {['전체', '국내제품', '수입제품'].map(tab => (
-          <button
-            key={tab}
-            onClick={() => setSelectedTab(tab)}
-            className={`tab-button ${selectedTab === tab ? 'active' : ''}`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-
-      <div className="product-grid">
-        {filtered.map((product, index) => (
-          <div key={index} className="product-card">
-            <img src={product.image} alt={product.name} className="product-image" />
-            <p className="product-name">{product.name}</p>
-            <p className="product-price">{product.price}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="pagination">
-        <button>{'<<'}</button>
-        <button className="active">1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>{'>>'}</button>
-      </div>
-    </div>
+    </div>  
   );
 };
 

@@ -9,6 +9,10 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  
+  width: 100%;              /* ✅ 이거 추가! */
+  box-sizing: border-box;   /* ✅ 이거도 추가! */
 }
 
 /* 왼쪽 로고 */
@@ -25,3 +29,14 @@
   font-weight: 500;
   margin-left: -10px; /* ✅ 왼쪽으로 더 붙게 */
 }
+
+/* 링크 스타일 초기화 */
+.navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar a:visited {
+  color: black;
+}
+
