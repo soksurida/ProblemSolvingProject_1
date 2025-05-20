@@ -1,9 +1,8 @@
 .product-container {
-  padding-top: 100px;         /* ✅ 헤더 아래 여백 확보 */
-  padding-left: 0;            /* ✅ 좌우 여백 제거 */
-  padding-right: 0;           /* ✅ 좌우 여백 제거 */
+  padding-top: 40px;         /* ⬅️ 헤더 아래 여백 줄임 */
+  padding-left: 40px;        /* ⬅️ 좌우 여백 추가 */
+  padding-right: 40px;
   padding-bottom: 2rem;
-  /* max-width, margin 제거해서 꽉 차게 */
   font-family: 'Arial', sans-serif;
   background-color: #ffffff;
 }
@@ -13,6 +12,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
+  text-align: left;          /* ⬅️ 왼쪽 정렬 */
 }
 
 /* 캐러셀 */
@@ -21,24 +21,26 @@
   overflow: hidden;
   position: relative;
   margin-bottom: 3rem;
+  padding: 0 40px;       /* ✅ 추가 */
+  box-sizing: border-box;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 500%; /* 5개 상품 기준 */
+  width: calc(100% * 5 / 3); /* ⬅️ 5개 중 3개만 보이도록 */
 }
 
 .carousel-card {
-  flex: 0 0 20%; /* 100% / 5개 */
+  flex: 0 0 33.3333%;    /* ✅ 확정적인 3개 비율 */
   text-align: center;
-  padding: 0 1rem;
+  padding: 0 0.5rem;     /* ✅ 필요시 여백 조절 */
   box-sizing: border-box;
 }
 
 .carousel-card img {
-  width: 85%; /* 100% → 85%로 줄임 */
-  max-width: 220px; /* 혹시 너무 커지는 거 방지 */
+  width: 85%;
+  max-width: 220px;
   margin: 0 auto;
   display: block;
   border-radius: 8px;

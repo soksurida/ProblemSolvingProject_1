@@ -21,13 +21,24 @@ const bestProducts = [
   {
     name: '초코에몽 밀크',
     price: '1,800원',
-    image: '/images/chocomong.jpg',
+    image: '/images/chocomong.png',
   },
   {
     name: '빙그레 초코우유',
     price: '1,500원',
-    image: '/images/binggrae.jpg',
+    image: '/images/binggrae.png',
   },
+  {
+    name: '초코에몽 밀크',
+    price: '1,800원',
+    image: '/images/chocomong.png',
+  },
+  {
+    name: '빙그레 초코우유',
+    price: '1,500원',
+    image: '/images/binggrae.png',
+  },
+
 ];
 
 const products = [
@@ -65,13 +76,15 @@ const ProductPage = () => {
     ? products
     : products.filter(p => p.category === selectedTab);
 
+  const maxSlide = bestProducts.length - 3 + 1; // 5개 중 3개씩 보이려면 3칸
+
   // 자동 슬라이드
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % (bestProducts.length - 2));
+      setCurrentSlide(prev => (prev + 1) % maxSlide);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [maxSlide]);
 
   return (
     <div className="product-page-wrapper">
@@ -82,7 +95,7 @@ const ProductPage = () => {
         <div className="carousel-multi">
           <div
             className="carousel-track"
-            style={{ transform: `translateX(-${currentSlide * 20}%)` }}
+            style={{ transform: `translateX(-${currentSlide * (100 / 3)}%)` }}
           >
             {bestProducts.map((product, index) => (
               <div key={index} className="carousel-card">
@@ -94,7 +107,7 @@ const ProductPage = () => {
           </div>
 
           <div className="carousel-buttons">
-            {Array.from({ length: bestProducts.length - 2 }).map((_, i) => (
+            {Array.from({ length: maxSlide }).map((_, i) => (
               <button
                 key={i}
                 className={i === currentSlide ? 'active' : ''}
@@ -134,7 +147,7 @@ const ProductPage = () => {
           <button>{'>>'}</button>
         </div>
       </div>
-    </div>  
+    </div>
   );
 };
 
