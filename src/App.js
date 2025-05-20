@@ -6,6 +6,7 @@ import QuestionPage from './components/QuestionPage';
 import ResultPage from './components/ResultPage';
 import GetYourChocoPage from './components/GetYourChocoPage'; 
 import LoginPage from './components/LoginPage'; // ✅ 로그인 페이지 import 추가
+import SignupPage from './components/SignupPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         {/* 테스트 결과 화면 */}
         <Route path="/result" element={<ResultPage />} />
         <Route path="/login" element={<LoginPage />} /> {/* ✅ 로그인 경로 추가 */}
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </Router>
   );
