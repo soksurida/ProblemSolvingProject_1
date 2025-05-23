@@ -3,88 +3,45 @@ import './ProductPage.css';
 import Header from './Header';
 
 const bestProducts = [
-  {
-    name: '서울 우유 초콜릿',
-    price: '2,000원',
-    image: '/images/seoulmilk.jpg',
-  },
-  {
-    name: '네스퀵 초콜릿 드링크 180ml',
-    price: '$10.99',
-    image: '/images/nesquik.png',
-  },
-  {
-    name: '허쉬 초콜릿 드링크',
-    price: '$10.99',
-    image: '/images/hershey.png',
-  },
-  {
-    name: '초코에몽 밀크',
-    price: '1,800원',
-    image: '/images/chocomong.png',
-  },
-  {
-    name: '빙그레 초코우유',
-    price: '1,500원',
-    image: '/images/binggrae.png',
-  },
-  {
-    name: '초코에몽 밀크',
-    price: '1,800원',
-    image: '/images/chocomong.png',
-  },
-  {
-    name: '빙그레 초코우유',
-    price: '1,500원',
-    image: '/images/binggrae.png',
-  },
-
+  { name: '서울 우유 초콜릿', price: '2,000원', image: '/images/seoulmilk.jpg' },
+  { name: '네스퀵 초콜릿 드링크 180ml', price: '$10.99', image: '/images/nesquik.png' },
+  { name: '허쉬 초콜릿 드링크', price: '$10.99', image: '/images/hershey.png' },
+  { name: '초코에몽 밀크', price: '1,800원', image: '/images/chocomong.png' },
+  { name: '빙그레 초코우유', price: '1,500원', image: '/images/binggrae.png' },
+  { name: '초코에몽 밀크', price: '1,800원', image: '/images/chocomong.png' },
+  { name: '빙그레 초코우유', price: '1,500원', image: '/images/binggrae.png' },
 ];
 
 const products = [
-  {
-    name: '네스퀵 초콜릿 드링크 180ml',
-    price: '$10.99',
-    image: '/images/nesquik.png',
-    category: '전체',
-  },
-  {
-    name: '허쉬 초콜릿 드링크',
-    price: '$10.99',
-    image: '/images/hershey.png',
-    category: '전체',
-  },
-  {
-    name: 'horrizon 우유',
-    price: '$10.99',
-    image: '/images/horrizon.png',
-    category: '국내제품',
-  },
-  {
-    name: 'cacaolat 오리지널 200ml',
-    price: '$10.99',
-    image: '/images/cacaolat.png',
-    category: '수입제품',
-  },
+  { name: '네스퀵 초콜릿 드링크 180ml', price: '$10.99', image: '/images/nesquik.png', category: '전체' },
+  { name: '허쉬 초콜릿 드링크', price: '$10.99', image: '/images/hershey.png', category: '전체' },
+  { name: 'horrizon 우유', price: '$10.99', image: '/images/horrizon.png', category: '국내제품' },
+  { name: '서울 우유 초콜릿', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: 'Promised Land', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: '상하목장 유기농 초코우유유', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: '덴마크 민트초코 우유', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: '빙그레 왕실초코', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: '서울우유 너티초코', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
 ];
 
 const ProductPage = () => {
   const [selectedTab, setSelectedTab] = useState('전체');
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0); // ✅ 슬라이딩 인덱스
 
-  const filtered = selectedTab === '전체'
-    ? products
-    : products.filter(p => p.category === selectedTab);
-
-  const maxSlide = bestProducts.length - 3 + 1; // 5개 중 3개씩 보이려면 3칸
+  const filtered = selectedTab === '전체' ? products : products.filter(p => p.category === selectedTab);
+  const visibleItems = bestProducts.slice(currentIndex, currentIndex + 3); // ✅ 항상 3개만 보여줌
 
   // 자동 슬라이드
   useEffect(() => {
+    const maxIndex = bestProducts.length - 3;
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % maxSlide);
+      setCurrentIndex(prev => (prev + 1 > maxIndex ? 0 : prev + 1));
     }, 3000);
     return () => clearInterval(interval);
-  }, [maxSlide]);
+  }, []);
 
   return (
     <div className="product-page-wrapper">
@@ -93,11 +50,8 @@ const ProductPage = () => {
         <h1 className="best-title">Best</h1>
 
         <div className="carousel-multi">
-          <div
-            className="carousel-track"
-            style={{ transform: `translateX(-${currentSlide * (100 / 3)}%)` }}
-          >
-            {bestProducts.map((product, index) => (
+          <div className="carousel-track no-slide">
+            {visibleItems.map((product, index) => (
               <div key={index} className="carousel-card">
                 <img src={product.image} alt={product.name} />
                 <p className="carousel-name">{product.name}</p>
@@ -107,11 +61,11 @@ const ProductPage = () => {
           </div>
 
           <div className="carousel-buttons">
-            {Array.from({ length: maxSlide }).map((_, i) => (
+            {Array.from({ length: bestProducts.length - 2 }).map((_, i) => (
               <button
                 key={i}
-                className={i === currentSlide ? 'active' : ''}
-                onClick={() => setCurrentSlide(i)}
+                className={i === currentIndex ? 'active' : ''}
+                onClick={() => setCurrentIndex(i)}
               />
             ))}
           </div>
