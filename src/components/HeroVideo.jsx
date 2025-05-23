@@ -87,7 +87,16 @@ const HeroVideo = () => {
               ) : b.label === 'Get your choco' ? (
                 <Link to="/getyourchoco" style={{ color: 'white', textDecoration: 'none' }}>
                   {b.label}
-                </Link>     
+                </Link>
+              ) : b.label === 'Community' ? (
+                <Link to="/community" style={{ color: 'white', textDecoration: 'none' }}>
+                  {b.label}
+                </Link>
+              ) : b.label === 'Brand' ? (
+                <Link to="/brand" style={{ color: 'white', textDecoration: 'none' }}>
+                  {b.label}
+                </Link>
+              
               ) : (
                 b.label
               )}

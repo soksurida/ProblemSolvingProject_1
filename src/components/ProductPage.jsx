@@ -8,21 +8,21 @@ const bestProducts = [
   { name: '허쉬 초콜릿 드링크', price: '$10.99', image: '/images/hershey.png' },
   { name: '초코에몽 밀크', price: '1,800원', image: '/images/chocomong.png' },
   { name: '빙그레 초코우유', price: '1,500원', image: '/images/binggrae.png' },
-  { name: '초코에몽 밀크', price: '1,800원', image: '/images/chocomong.png' },
-  { name: '빙그레 초코우유', price: '1,500원', image: '/images/binggrae.png' },
+  { name: 'Promised Land', price: '1,800원', image: '/images/promised.png' },
+  { name: 'cacaolat 오리지널 200ml', price: '1,500원', image: '/images/cacaolat.png' },
 ];
 
 const products = [
-  { name: '네스퀵 초콜릿 드링크 180ml', price: '$10.99', image: '/images/nesquik.png', category: '전체' },
-  { name: '허쉬 초콜릿 드링크', price: '$10.99', image: '/images/hershey.png', category: '전체' },
-  { name: 'horrizon 우유', price: '$10.99', image: '/images/horrizon.png', category: '국내제품' },
-  { name: '서울 우유 초콜릿', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
-  { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
-  { name: 'Promised Land', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
-  { name: '상하목장 유기농 초코우유유', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
-  { name: '덴마크 민트초코 우유', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
-  { name: '빙그레 왕실초코', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
-  { name: '서울우유 너티초코', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
+  { name: '네스퀵 초콜릿 드링크 180ml', price: '$10.99', image: '/images/nesquik.png', category: '국내제품' },
+  { name: '허쉬 초콜릿 드링크', price: '$10.99', image: '/images/hershey.png', category: '해외제품' },
+  { name: 'horrizon 우유', price: '$10.99', image: '/images/horrizon.png', category: '해외제품' },
+  { name: '서울 우유 초콜릿', price: '$10.99', image: '/images/seoulmilk.jpg', category: '국내제품' },
+  { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '해외제품' },
+  { name: 'Promised Land', price: '$10.99', image: '/images/promised.png', category: '해외제품' },
+  { name: '상하목장 유기농 초코우유유', price: '$10.99', image: '/images/sangha.png', category: '국내제품' },
+  { name: '덴마크 민트초코 우유', price: '$10.99', image: '/images/denmark.png', category: '국내제품' },
+  { name: '빙그레 왕실초코', price: '$10.99', image: '/images/bingrae2.png', category: '국내제품' },
+  { name: '서울우유 너티초코', price: '$10.99', image: '/images/seoulnutty.png', category: '국내제품' },
   { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
   { name: 'cacaolat 오리지널 200ml', price: '$10.99', image: '/images/cacaolat.png', category: '수입제품' },
 ];
@@ -72,7 +72,7 @@ const ProductPage = () => {
         </div>
 
         <div className="tabs">
-          {['전체', '국내제품', '수입제품'].map(tab => (
+          {['전체', '국내제품', '해외제품'].map(tab => (
             <button
               key={tab}
               onClick={() => setSelectedTab(tab)}

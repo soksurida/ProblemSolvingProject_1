@@ -7,6 +7,8 @@ import ResultPage from './components/ResultPage';
 import GetYourChocoPage from './components/GetYourChocoPage'; 
 import LoginPage from './components/LoginPage'; // ✅ 로그인 페이지 import 추가
 import SignupPage from './components/SignupPage';
+import OurStory from './components/OurStory'; // 파일 위치가 ./components라면 이렇게
+
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/result" element={<ResultPage />} />
         <Route path="/login" element={<LoginPage />} /> {/* ✅ 로그인 경로 추가 */}
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/brand" element={<OurStory />} />
+
       </Routes>
     </Router>
   );

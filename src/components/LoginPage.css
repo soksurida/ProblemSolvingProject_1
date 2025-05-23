@@ -4,6 +4,11 @@
   align-items: center;
   margin-top: 60px; /* 기존 100px → 60px */
   font-family: 'Noto Sans KR', sans-serif;
+
+  background-color: white; /* ✅ 이 줄 추가 */
+  min-height: 100vh;       /* ✅ 화면 전체를 흰색으로 채우기 위해 */
+  width: 100%;
+
 }
 
 .login-title {
