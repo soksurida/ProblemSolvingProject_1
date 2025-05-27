@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  /*height: 100vh;       
+  overflow-y: scroll;  
+
+  width: 100%; */
+  box-sizing: border-box;
+
+}
+
+.page-wrapper {
+  padding-top: 80px;
+  padding-left: 40px;  /* ✅ Header와 동일하게 맞춤 */
+  padding-right: 40px; /* ✅ Header와 동일하게 맞춤 */
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
+}
+

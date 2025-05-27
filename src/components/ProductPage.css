@@ -1,11 +1,10 @@
 .product-container {
-  padding-top: 100px;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-top: 40px;         /* ⬅️ 헤더 아래 여백 줄임 */
+  padding-left: 40px;        /* ⬅️ 좌우 여백 추가 */
+  padding-right: 40px;
   padding-bottom: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
   font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
 }
 
 /* Best 제목 */
@@ -13,6 +12,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
+  text-align: left;          /* ⬅️ 왼쪽 정렬 */
 }
 
 /* 캐러셀 */
@@ -21,24 +21,27 @@
   overflow: hidden;
   position: relative;
   margin-bottom: 3rem;
+  padding: 0;       /* ✅ 추가 */
+  box-sizing: border-box;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 500%; /* 5개 상품 기준 */
+  justify-content: center;
+  gap: 2rem;
 }
 
 .carousel-card {
-  flex: 0 0 20%; /* 100% / 5개 */
+  width: 30%;
   text-align: center;
   padding: 0 1rem;
   box-sizing: border-box;
 }
 
+
 .carousel-card img {
-  width: 85%; /* 100% → 85%로 줄임 */
-  max-width: 220px; /* 혹시 너무 커지는 거 방지 */
+  width: 85%;
+  max-width: 220px;
   margin: 0 auto;
   display: block;
   border-radius: 8px;
@@ -138,4 +141,11 @@
 .pagination .active {
   font-weight: bold;
   color: black;
+}
+
+.product-page-wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }

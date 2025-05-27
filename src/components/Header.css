@@ -1,57 +1,41 @@
-.header {
-  position: fixed;           /* 스크롤해도 고정 */
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;             /* 다른 요소 위에 오도록 */
-  width: 100%;
+/* 상단 네비게이션 바 */
+.navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;        /* 필요시 0으로 줄여도 OK */
-  border-bottom: 1px solid #ddd;
-  background-color: white;   /* 고정 시 배경 비침 방지 */
-  font-family: 'Noto Sans KR', sans-serif;
-  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  
+  width: 100%;              /* ✅ 이거 추가! */
+  box-sizing: border-box;   /* ✅ 이거도 추가! */
 }
 
+/* 왼쪽 로고 */
 .logo {
   font-size: 22px;
   font-weight: bold;
 }
 
-.nav {
+/* 가운데 링크 그룹 */
+.nav-center {
   display: flex;
-  gap: 60px; /* 메뉴 간 간격 */
-}
-
-.nav a {
-  text-decoration: none;
-  color: black;
-  font-size: 15px;
+  gap: 160px; /* ✅ 간격 더 벌림 */
+  font-size: 16px;
   font-weight: 500;
+  margin-left: -10px; /* ✅ 왼쪽으로 더 붙게 */
 }
 
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  font-size: 20px;
-  color: #222;
-  padding-top: 4px;
-  font-weight: 400;
-  opacity: 0.8;
+/* 링크 스타일 초기화 */
+.navbar a {
+  color: black;
+  text-decoration: none;
 }
 
-.icons span {
-  display: inline-block;
-  font-family: 'Segoe UI Symbol', 'Apple Color Emoji', 'Noto Sans Symbols', sans-serif;
-  line-height: 1;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  cursor: pointer;
-}
-
-.icons span:hover {
-  transform: scale(1.05);
-  opacity: 1;
+.navbar a:visited {
+  color: black;
 }

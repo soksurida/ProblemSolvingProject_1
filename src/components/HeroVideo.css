@@ -74,13 +74,13 @@
   color: white;
 }
 
-.logo-text {
+.hero-logo-text {
   font-size: 50px;
   font-weight: bold;
   white-space: nowrap;
 }
 
-.logo-sub {
+.hero-logo-sub {
   font-size: 20px;
   opacity: 0.8;
   margin-top: 4px;

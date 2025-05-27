@@ -73,8 +73,8 @@ const HeroVideo = () => {
           
 
           <div className="logo-core">
-            <div className="logo-text">Choco House</div>
-            <div className="logo-sub">달콤한 하루의 시작</div>
+            <div className="hero-logo-text">Choco House</div>
+            <div className="hero-logo-sub">달콤한 하루의 시작</div>
           </div>
 
           
@@ -84,6 +84,19 @@ const HeroVideo = () => {
                 <Link to="/product" style={{ color: 'white', textDecoration: 'none' }}>
                   {b.label}
                 </Link>
+              ) : b.label === 'Get your choco' ? (
+                <Link to="/getyourchoco" style={{ color: 'white', textDecoration: 'none' }}>
+                  {b.label}
+                </Link>
+              ) : b.label === 'Community' ? (
+                <Link to="/community" style={{ color: 'white', textDecoration: 'none' }}>
+                  {b.label}
+                </Link>
+              ) : b.label === 'Brand' ? (
+                <Link to="/brand" style={{ color: 'white', textDecoration: 'none' }}>
+                  {b.label}
+                </Link>
+              
               ) : (
                 b.label
               )}

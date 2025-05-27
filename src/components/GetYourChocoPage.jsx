@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './GetYourChocoPage.css';
+import Header from './Header';
 
 function GetYourChocoPage() {
   const navigate = useNavigate();
@@ -35,22 +36,7 @@ function GetYourChocoPage() {
 
   return (
     <div className="getyourchoco-page">
-      <header className="navbar">
-        <div className="logo">Choco House</div>
-
-        <nav className="nav-center">
-          <span>Product</span>
-          <span>Get Your Choco</span>
-          <span>Community</span>
-          <span>Brand</span>
-        </nav>
-
-        <div className="nav-icon-group">
-          <img src="/images/search-icon.png" alt="Search" className="icon-img" />
-          <img src="/images/cart-icon.png" alt="Cart" className="icon-img" />
-          <img src="/images/login-icon.png" alt="Login" className="login-icon" />
-        </div>
-      </header>
+      <Header/>
 
       {isLoading ? (
         <div className="loading-screen">
@@ -63,6 +49,7 @@ function GetYourChocoPage() {
           <button className="play-button" onClick={handlePlay}>Play</button>
         </div>
       )}
+
     </div>
   );
 }
