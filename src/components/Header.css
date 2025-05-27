@@ -40,3 +40,33 @@
   color: black;
 }
 
+/*추가*/
+
+/* ▼ 검색창 스타일 */
+.search-box {
+  position: absolute;
+  top: 80px; /* 헤더 바로 아래 위치 */
+  right: 100px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  gap: 8px;
+  z-index: 999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  width: 200px;
+}
+
+.search-box button {
+  padding: 8px 12px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
