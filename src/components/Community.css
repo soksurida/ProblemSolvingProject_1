@@ -1,0 +1,189 @@
+/* Community.css */
+.community-container {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin: 10px 0 30px;
+}
+
+.welcome {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.menu-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.tab {
+  font-size: 16px;
+  cursor: pointer;
+  padding-bottom: 4px;
+}
+
+.tab.active {
+  color: red;
+  font-weight: bold;
+  border-bottom: 2px solid red;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ccc;
+  padding: 16px 0;
+}
+
+.accordion-header {
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion-body {
+  font-size: 15px;
+  padding: 10px 0 0;
+  color: #555;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.faq-box {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #4caf50;
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.faq-answer {
+  color: #333;
+  line-height: 1.5;
+}
+
+.faq-box {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #f7f7f7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-box:hover {
+  background-color: #eee;
+}
+
+.faq-question {
+  font-weight: bold;
+  display: flex;
+  align-items: center;   /* ✅ 수직 중앙 정렬 */
+  min-height: 40px;       /* ✅ 최소 높이 설정 (원하는 높이로 조정 가능) */
+}
+
+.faq-answer {
+  color: #333;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.faq-question {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+
+  padding-top: 5px;         /* ✅ 글씨를 약간 아래로 밀기 */
+  line-height: 1.6;         /* ✅ 줄 높이도 조절 가능 */
+}
+
+.inquiry-form {
+  margin-top: 40px;
+}
+
+.checkbox-section {
+  margin-bottom: 30px;
+}
+
+.small-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.consent-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.consent-table th, .consent-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.agree-check {
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.consent-warning {
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+form button {
+  background-color: black;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
