@@ -55,7 +55,7 @@
 
 /* 서브 제목 */
 .sub-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
   margin-bottom: 40px;
   letter-spacing: 2px; /* ✅ 글자 사이 간격 추가 */
