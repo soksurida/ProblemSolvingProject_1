@@ -10,7 +10,6 @@
   top: 0;
   z-index: 1000;
 
-  
   width: 100%;              /* ✅ 이거 추가! */
   box-sizing: border-box;   /* ✅ 이거도 추가! */
 }
@@ -38,39 +37,62 @@
 
 .navbar a:visited {
   color: black;
-<<<<<<< HEAD
 }
 
-/*추가*/
-
-/* ▼ 검색창 스타일 */
-.search-box {
+/* ✅ 팝업처럼 헤더 아래에 뜨는 검색창 */
+.search-popup {
   position: absolute;
-  top: 80px; /* 헤더 바로 아래 위치 */
-  right: 100px;
+  top: 64px; /* ✅ 헤더 높이에 맞게 조절 */
+  left: 0;
+  width: 100%;
   background: white;
-  padding: 10px;
-  border: 1px solid #ccc;
-  display: flex;
-  gap: 8px;
   z-index: 999;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.search-box input {
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  width: 200px;
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.search-box button {
-  padding: 8px 12px;
-  background-color: black;
+.search-popup-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 40px;
+}
+
+.search-popup-inner input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-popup-inner button {
+  padding: 12px 16px;
+  background: black;
   color: white;
   border: none;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
 }
-=======
+
+.close-btn {
+  background: none;
+  color: black;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0 10px;
 }
->>>>>>> 88a6eb542998ad5eeb90763c9ab1079b69ea5304

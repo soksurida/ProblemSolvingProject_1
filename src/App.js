@@ -8,13 +8,9 @@ import ResultPage from './components/ResultPage';
 import GetYourChocoPage from './components/GetYourChocoPage';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
-<<<<<<< HEAD
-import OurStory from './components/OurStory'; // 파일 위치가 ./components라면 이렇게
 import CartPage from './components/CartPage';
-=======
 import OurStory from './components/OurStory';
-import Community from './components/Community'; // ✅ 커뮤니티 페이지 import 추가
->>>>>>> 88a6eb542998ad5eeb90763c9ab1079b69ea5304
+import Community from './components/Community';
 
 function App() {
   return (
