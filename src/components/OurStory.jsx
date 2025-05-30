@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './OurStory.css';
 import Header from './Header';
 import chocoVideo from '../assets/Chocolate Milk Moments.mp4';
@@ -11,31 +11,27 @@ const data = [
   {
     title: '엄선된 원유',
     image: kakaoImg,
-    desc: `고급 브랜드가 자랑하는 청정 원유 사용\n`
+    desc: `신뢰할 수 있는 브랜드의\n초코우유만을 선별\n`
   },
   {
     title: '다양한 카카오',
     image: namuImg,
-    desc: `진한 맛, 부드러운 맛 모두 아우르는 셀렉션\n`
+    desc: `진한 맛부터 부드러운 맛까지,\n모두 아우르는 구성\n`
   },
   {
     title: '브랜드 셀렉션',
     image: roastingImg,
-    desc: `엄격한 기준으로 선별한 믿을 수 있는 제품들`
+    desc: `국내외 인기 초코우유 브랜드를\n직접 고르고 소개`
   },
   {
     title: '취향별 큐레이션',
     image: milkImg,
-    desc: `내 입맛에 맞는 초코우유를 쉽게 찾을 수 있도록 추천 기능 제공`
+    desc: `나에게 맞는 초코우유를 추천해주는 맞춤형 셀렉션 제공`
   }
 ];
 
 export default function OurStory() {
-  const [current, setCurrent] = useState(0);
   const sectionsRef = useRef([]);
-
-  const prev = () => setCurrent((current - 1 + data.length) % data.length);
-  const next = () => setCurrent((current + 1) % data.length);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,7 +40,7 @@ export default function OurStory() {
           if (entry.isIntersecting) {
             entry.target.classList.add('show');
           } else {
-            entry.target.classList.remove('show'); // 👈 스크롤 벗어나면 다시 제거
+            entry.target.classList.remove('show');
           }
         });
       },
@@ -91,40 +87,30 @@ export default function OurStory() {
 
       <section className="our-story-slider">
         <h2 className="our-story-title">한 잔에 담은 진심, 초콜릿의 품격</h2>
-        <div className="slider-wrapper">
-          <button className="arrow left" onClick={prev}>&#60;</button>
-          <div className="our-cards">
-            {data.map((item, index) => {
-              let position = 'hidden';
-              if (index === current) position = 'center';
-              else if (index === (current - 1 + data.length) % data.length) position = 'left';
-              else if (index === (current + 1) % data.length) position = 'right';
-              return (
-                <div className={`our-card ${position}`} key={index}>
-                  <img src={item.image} alt={item.title} className="our-circle-img" />
-                  <h3 className="our-card-title">{item.title}</h3>
-                  <div className="our-card-desc">
-                    {item.desc.split('\n').map((line, i) => (
-                      <p key={i}>{line}</p>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <button className="arrow right" onClick={next}>&#62;</button>
+        <div className="our-cards no-slider">
+          {data.map((item, index) => (
+            <div className="our-card" key={index}>
+              <img src={item.image} alt={item.title} className="our-circle-img" />
+              <h3 className="our-card-title">{item.title}</h3>
+              <div className="our-card-desc">
+                {item.desc.split('\n').map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="info-section why hidden" ref={el => sectionsRef.current[0] = el}>
-        <h2>Why We Made This</h2>
+        <h2>Why We Created Choco House</h2>
         <p className="info-subtitle">초코우유를 사랑하는 모든 이들을 위해</p>
         <p>
           초코우유를 사랑하는 모두가 더 쉽게, 더 다양하게 즐길 수 있도록<br />
           Choco House를 만들었습니다.
         </p>
         <p>
-          우리는 진한 맛, 부드러운 맛, 가볍고 깔끔한 맛까지 다양한 초코우유를 한 곳에 모아,<br />
+          진한 맛, 부드러운 맛, 가볍고 깔끔한 맛까지 다양한 초코우유를 한 곳에 모아,<br />
           당신의 취향에 꼭 맞는 초코우유를 발견할 수 있도록 돕습니다.
         </p>
       </section>
