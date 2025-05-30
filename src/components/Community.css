@@ -1,0 +1,369 @@
+/* Community.css */
+.community-container {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.subtitle {
+  font-size: 23px;
+  margin: 10px 0 30px;
+  margin-bottom: 60px;
+}
+
+.welcome {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 80px; /* ✅ 아래 요소와 간격 더 넓힘 (기존 40px → 60px) */
+}
+
+.menu-tabs {
+  display: flex;
+  justify-content: center;  /* ✅ 중앙 정렬 */
+  gap: 150px;                /* ✅ 넓은 간격 유지 */
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.tab {
+  font-size: 20px;
+  cursor: pointer;
+  position: relative; /* ✅ after 포지션 기준 */
+  padding-bottom: 4px;
+}
+
+.tab.active {
+  color: red;
+  font-weight: bold;
+  /* border-bottom: 2px solid red; ❌ 제거해줘 */
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  transition: transform 0.3s ease;
+}
+
+.tab.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ccc;
+  padding: 24px 0; /* ✅ 기존 16px → 24px 으로 늘림 */
+  margin-bottom: 15px; /* ✅ 항목 간 간격 추가 */
+}
+
+.accordion-header {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.accordion-body {
+  font-size: 16px;
+  padding: 10px 0 0;
+  color: #555;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.faq-box {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #4caf50;
+}
+
+.faq-box {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #f7f7f7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-answer {
+  color: #333;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  margin-bottom: 10px;
+
+  padding-top: 5px;         /* ✅ 글씨를 약간 아래로 밀기 */
+  line-height: 1.6;         /* ✅ 줄 높이도 조절 가능 */
+}
+
+.inquiry-form {
+  margin-top: 40px;
+}
+
+.checkbox-section {
+  margin-bottom: 30px;
+}
+
+.small-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.consent-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.consent-table th, .consent-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.agree-check {
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.consent-warning {
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+form button {
+  background-color: black;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+   /* ✅ 중앙 정렬 추가 */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+  text-align: center;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.phone-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.phone-inputs input {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.modal-confirm {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 24px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.same-font {
+  font-family: 'Noto Sans KR', sans-serif; /* 나머지 폼 요소와 일치하게 */
+  font-size: 14px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.faq-icon {
+  display: inline-block;
+  width: 24px;              /* ✅ 너비 고정 */
+  height: 24px;             /* ✅ 높이 고정 */
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 24px;        /* ✅ 세로 중앙 정렬 */
+  border-radius: 4px;
+  margin-right: 10px;
+  flex-shrink: 0;           /* ✅ flex 컨테이너에서 줄어들지 않게 */
+}
+
+.q-icon {
+  background-color: #a7a7a7;
+}
+
+.a-icon {
+  background-color: #52bf56;
+}
+
+.faq-answer {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.faq-text {
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 나의 상담내역 */
+.mypage-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.mypage-desc {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.mypage-count {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: black; /* 전체 글자색은 검정 */
+}
+
+.mypage-count-red {
+  color: red;
+  font-weight: bold;
+}
+
+.mypage-table {
+  width: 100%;
+  border-top: 2px solid #222;
+  border-collapse: collapse;
+  margin-top: 12px;
+  table-layout: fixed;
+}
+
+.mypage-table th,
+.mypage-table td {
+  padding: 12px 16px;
+  font-size: 15px;
+  border-bottom: 1px solid #ddd;
+  word-break: break-word;
+}
+
+.mypage-table th.no,
+.mypage-table th.category {
+  width: 15%;
+  text-align: left;
+}
+
+.mypage-table th.title {
+  width: 40%;
+  text-align: center;
+}
+
+.mypage-table th.date,
+.mypage-table th.status {
+  width: 15%;
+  text-align: right;
+  padding-right: 24px;
+}
+
+.mypage-empty {
+  text-align: center;
+  padding: 40px 0;
+}

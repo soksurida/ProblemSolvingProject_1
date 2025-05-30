@@ -1,0 +1,164 @@
+.question-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 중앙 */
+  align-items: center;     /* 수평 중앙 */
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #faf6ed, #f4ead2);
+}
+
+/* ✅ 로고와 인트로 묶음 (새로 감싸줌) */
+.intro-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-35px); /* ✅ 로고 + 인트로 전체를 위로 이동 */
+}
+
+/* Choco House 텍스트 */
+.logo-text {
+  font-size: 20px;
+  font-weight: 450;
+  margin-bottom: 17px;
+  text-align: center;
+}
+
+/* start 화면 */
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 인트로 제목 */
+.start-screen h1 {
+  font-size: 34px;
+  font-weight: bold;
+  margin: 20px 0 20px 0;
+}
+
+/* 인트로 설명 */
+.start-screen p {
+  font-size: 19px;
+  margin: 3px 0;
+}
+
+/* Start 버튼 */
+.start-button {
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #6b4c36;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.start-button:hover {
+  background-color: #825d43;
+  transform: scale(1.05);
+}
+
+/* ============================== */
+/* 여기부터 질문 화면 (질문+버튼)만 수정 */
+/* ============================== */
+
+/* 질문 화면 전체 */
+.test-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: -40px; /* ✅ 질문화면 전체를 위로 올리기 */
+}
+
+.question-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px; /* 질문과 아래 진행바 사이 간격은 그대로 */
+}
+
+/* 진행도 바 */
+.progress-bar-outer {
+  width: 500px; /* px 고정 */
+  height: 14px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  margin: 20px auto 40px;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background-color: #6b4c36;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* 답변 버튼 그룹 */
+.answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* 버튼 사이 여백 */
+}
+
+/* 답변 버튼 */
+.answer-button {
+  width: 310px;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* 버튼별 배경색 */
+.answer-button:nth-child(1) {
+  background: #f5e0c3;
+}
+.answer-button:nth-child(2) {
+  background: #d2b48c;
+}
+.answer-button:nth-child(3) {
+  background: #95693f;
+  color: black;
+}
+
+/* 버튼 hover */
+.answer-button:hover {
+  transform: scale(1.05);
+}
+
+/* 공통 버튼 (ex: 다시하기 등) */
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #A0522D;
+  transform: scale(1.05);
+}
+
+/* secondary 버튼 */
+.button.secondary {
+  background-color: #D2B48C;
+  color: black;
+}
+
+.button.secondary:hover {
+  background-color: #DEB887;
+}
