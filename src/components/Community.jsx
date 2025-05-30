@@ -1,10 +1,12 @@
 // Community.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import './Community.css';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import DaumPostcode from 'react-daum-postcode';
 
 function Community() {
+  const [inquiries, setInquiries] = useState([]);
   const [activeTab, setActiveTab] = useState('공지사항');
   const [openIndex, setOpenIndex] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -12,6 +14,24 @@ function Community() {
   const [phone2, setPhone2] = useState('');
   const [phone3, setPhone3] = useState('');
   const [error, setError] = useState('');
+
+  const [category, setCategory] = useState('');
+  const [subcategory, setSubcategory] = useState('');
+
+  const [zipcode, setZipcode] = useState('');
+  const [address, setAddress] = useState('');
+  const [showPostcode, setShowPostcode] = useState(false);
+
+  useEffect(() => {
+  const saved = localStorage.getItem('inquiries');
+  if (saved) setInquiries(JSON.parse(saved));
+}, []);
+
+  const categoryOptions = {
+    '불편사항': ['제품배달 안됨', '다른제품 배달', '소비기한 불만', '제품 이상', '제품 내 이물', '제품이 새는 경우', '우유팩 개봉 불편', '기타'],
+    '문의사항': ['제품 관련', '이벤트 관련', '주문 관련', '기타'],
+    '건의사항': ['제품 관련', '이벤트 관련', '주문 관련', '기타']
+  };
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -46,7 +66,8 @@ const renderMyPage = () => (
   <div className="mypage-section">
     <h2 className="mypage-title">나의 상담내역</h2>
     <p className="mypage-count">
-      총 <span className="mypage-count-red">0</span>개의 게시물이 있습니다
+      총 <span className="mypage-count-red">{inquiries.filter(item => item.phone === `${phone1}-${phone2}-${phone3}`).length}</span>개의 게시물이 있습니다
+
     </p>
     <table className="mypage-table">
       <thead>
@@ -59,12 +80,34 @@ const renderMyPage = () => (
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td colSpan="5" className="mypage-empty">
-            등록된 상담 내역이 없습니다.
-          </td>
-        </tr>
+        {inquiries.length > 0 ? (
+          inquiries
+            .filter((item) => item.phone === `${phone1}-${phone2}-${phone3}`)
+            .map((item, index) => (
+              <tr key={index}>
+                <td>{item.no}</td>
+                <td>{`${item.category} - ${item.subcategory}`}</td>
+                <td>{item.title}</td>
+                <td>{item.date}</td>
+                <td>
+  {item.answered ? (
+    '답변완료'
+  ) : (
+    <span className="status-waiting">대기중</span>
+  )}
+</td>
+
+              </tr>
+            ))
+        ) : (
+          <tr>
+            <td colSpan="5" className="mypage-empty">
+              등록된 상담 내역이 없습니다.
+            </td>
+          </tr>
+        )}
       </tbody>
+
     </table>
   </div>
 );
@@ -118,54 +161,100 @@ const renderMyPage = () => (
     </div>
   );
 
-  const renderInquiryForm = () => (
-    <div className="inquiry-form">
-      <div className="checkbox-section">
-        <p className="small-title">개인정보 수집 및 보유 동의</p>
-        <table className="consent-table">
-          <thead>
-            <tr><th>수집항목</th><th>수집목적</th><th>보유기간</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>이름, 연락처, 이메일</td>
-              <td>고객문의 접수 및 처리 결과 회신</td>
-              <td>문의 접수일로부터 3년</td>
-            </tr>
-          </tbody>
-        </table>
-        <label className="agree-check">
-          <input type="radio" name="agree" /> 동의
-        </label>
-        <label className="agree-check">
-          <input type="radio" name="agree" /> 동의하지 않음
-        </label>
-        <p className="consent-warning">
-          고객님께서는 개인정보 수집 및 보유에 대한 동의를 거부할 권리가 있습니다.
-          동의하지 않을 경우 고객상담처리 완료안내나 내용의 답변을 드릴 수 없습니다.
-        </p>
-      </div>
-
-      <h3>고객 기본정보</h3>
-      <form>
-        <input type="text" placeholder="이름" required />
-        <input type="tel" placeholder="연락처" required />
-
-        <p className="small-title">주소</p>
-        <input type="text" placeholder="우편번호" />
-        <input type="text" placeholder="기본주소" />
-        <input type="text" placeholder="나머지 주소 (선택 입력 가능)" />
-        <p className="consent-warning">클레임 제품 회수를 원하실 경우 주소를 입력하시기 바랍니다.</p>
-
-        <input type="text" placeholder="상담분류" />
-        <input type="text" placeholder="제목" required />
-        <textarea className="same-font" placeholder="내용" rows={5} required></textarea>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <button type="submit">상담문의 등록</button>
-        </div>
-      </form>
+const renderInquiryForm = () => (
+  <div className="inquiry-form">
+    <div className="checkbox-section">
+      <p className="small-title">개인정보 수집 및 보유 동의</p>
+      <table className="consent-table">
+        <thead>
+          <tr><th>수집항목</th><th>수집목적</th><th>보유기간</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>이름, 연락처, 이메일</td>
+            <td>고객문의 접수 및 처리 결과 회신</td>
+            <td>문의 접수일로부터 3년</td>
+          </tr>
+        </tbody>
+      </table>
+      <label className="agree-check">
+        <input type="radio" name="agree" /> 동의
+      </label>
+      <label className="agree-check">
+        <input type="radio" name="agree" /> 동의하지 않음
+      </label>
+      <p className="consent-warning">
+        고객님께서는 개인정보 수집 및 보유에 대한 동의를 거부할 권리가 있습니다.
+        동의하지 않을 경우 고객상담처리 완료안내나 내용의 답변을 드릴 수 없습니다.
+      </p>
     </div>
-  );
+
+    <h3>고객 기본정보</h3>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="이름" required />
+      <input type="tel" placeholder="연락처" required />
+
+<p className="small-title">주소</p>
+<div className="zip-row">
+  <input
+    type="text"
+    placeholder="우편번호"
+    value={zipcode}
+    readOnly
+  />
+  <button type="button" onClick={() => setShowPostcode(true)}>
+    우편번호 찾기
+  </button>
+</div>
+<input
+  type="text"
+  placeholder="기본주소"
+  value={address}
+  readOnly
+/>
+<input type="text" placeholder="나머지 주소 (선택 입력 가능)" />
+<p className="consent-warning">
+  클레임 제품 회수를 원하실 경우 주소를 입력하시기 바랍니다.
+</p>
+
+
+<p className="small-title">상담분류</p>
+<div className="dropdown-row">
+  <select
+    value={category}
+    onChange={(e) => {
+      setCategory(e.target.value);
+      setSubcategory('');
+    }}
+    required
+  >
+    <option value="">상담분류 선택</option>
+    {Object.keys(categoryOptions).map((cat) => (
+      <option key={cat} value={cat}>{cat}</option>
+    ))}
+  </select>
+
+  <select
+    value={subcategory}
+    onChange={(e) => setSubcategory(e.target.value)}
+    disabled={!category}
+    required
+  >
+    <option value="">세부분류 선택</option>
+    {categoryOptions[category]?.map((sub) => (
+      <option key={sub} value={sub}>{sub}</option>
+    ))}
+  </select>
+</div>
+
+      <input type="text" placeholder="제목" required />
+      <textarea className="same-font" placeholder="내용" rows={5} required></textarea>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <button type="submit">상담문의 등록</button>
+      </div>
+    </form>
+  </div>
+);
 
   const handlePhoneCheck = () => {
     if (!/^[0-9]{3}$/.test(phone1) || !/^[0-9]{3,4}$/.test(phone2) || !/^[0-9]{4}$/.test(phone3)) {
@@ -177,6 +266,37 @@ const renderMyPage = () => (
     setActiveTab('나의 문의내역');
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form[0].value;
+    const phone = form[1].value;
+    const category = form[6].value;
+    const subcategory = form[7].value;
+    const title = form[8].value;
+    const content = form[9].value;
+
+    const newInquiry = {
+      no: inquiries.length + 1,
+      name,
+      phone,
+      category,
+      subcategory,
+      title,
+      content,
+      date: new Date().toLocaleDateString(),
+      answered: false,
+    };
+
+    const updatedInquiries = [...inquiries, newInquiry];
+    setInquiries(updatedInquiries);
+    localStorage.setItem('inquiries', JSON.stringify(updatedInquiries));
+    alert('상담이 등록되었습니다.');
+    form.reset();
+    setZipcode('');    
+    setAddress('');
+  };
+
   const renderModal = () => (
     <div className="modal-backdrop">
       <div className="modal-box">
@@ -185,11 +305,41 @@ const renderMyPage = () => (
           <button className="close-button" onClick={() => setShowModal(false)}>×</button>
         </div>
         <p>문의하신 연락처를 입력하시기 바랍니다.</p>
+
         <div className="phone-inputs">
-          <input type="text" maxLength="3" value={phone1} onChange={(e) => setPhone1(e.target.value)} /> -
-          <input type="text" maxLength="4" value={phone2} onChange={(e) => setPhone2(e.target.value)} /> -
-          <input type="text" maxLength="4" value={phone3} onChange={(e) => setPhone3(e.target.value)} />
-        </div>
+  <input
+    type="text"
+    maxLength="3"
+    value={phone1}
+    onChange={(e) => {
+      setPhone1(e.target.value);
+      if (e.target.value.length === 3) {
+        document.getElementById('phone2')?.focus();
+      }
+    }}
+  /> -
+
+  <input
+    id="phone2"
+    type="text"
+    maxLength="4"
+    value={phone2}
+    onChange={(e) => {
+      setPhone2(e.target.value);
+      if (e.target.value.length === 4) {
+        document.getElementById('phone3')?.focus();
+      }
+    }}
+  /> -
+
+  <input
+    id="phone3"
+    type="text"
+    maxLength="4"
+    value={phone3}
+    onChange={(e) => setPhone3(e.target.value)}
+  />
+</div>       
         <button className="modal-confirm" onClick={handlePhoneCheck}>확인</button>
         {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
       </div>
@@ -251,7 +401,24 @@ const renderMyPage = () => (
         {activeTab === '고객상담' && renderInquiryForm()}
         {activeTab === '나의 문의내역' && renderMyPage()}
 
-        {showModal && renderModal()}
+      {showModal && renderModal()}
+
+      {/* ✅ 여기다 넣어! */}
+      {showPostcode && (
+        <div className="modal-backdrop">
+          <div className="modal-box">
+            <DaumPostcode
+              onComplete={(data) => {
+                setZipcode(data.zonecode);
+                setAddress(data.address);
+                setShowPostcode(false);
+              }}
+            />
+           <button className="close-postcode" onClick={() => setShowPostcode(false)}>닫기</button> {/* ✅ class 추가 */}
+          </div>
+        </div>
+      )}
+
       </div>
     </div>
   );
