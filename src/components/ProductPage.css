@@ -1,151 +1,166 @@
-.product-container {
-  padding-top: 40px;         /* ⬅️ 헤더 아래 여백 줄임 */
-  padding-left: 40px;        /* ⬅️ 좌우 여백 추가 */
-  padding-right: 40px;
-  padding-bottom: 2rem;
-  font-family: 'Arial', sans-serif;
-  background-color: #ffffff;
+.product-main {
+  display: flex;
+  padding: 40px 30px;
+  gap: 150px; /* 좌측 필터와 우측 콘텐츠 간 여백 확보 */
+  align-items: flex-start;
 }
 
-/* Best 제목 */
-.best-title {
-  font-size: 2rem;
+.product-sidebar {
+  width: 160px;
+  position: sticky;    /* ✅ 스크롤 고정 */
+  top: 150px;           /* 상단에서 100px 아래에 고정됨 */
+  align-self: flex-start;
+}
+
+.sidebar-title {
+  font-size: 22px;           /* ✅ "제품" 제목 더 크게 */
+  font-weight: normal !important;
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #000;
+  width: 200%;               /* ✅ 검은 밑줄 바 길이 2배 */
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-item {
+  margin: 16px 0;
+  cursor: pointer;
+  color: #111;
+  font-size: 17px;
+  margin-bottom: 20px; /* ✅ 항목 간 간격 조절 */
+}
+
+.filter-item.active {
   font-weight: bold;
-  margin-bottom: 2rem;
-  text-align: left;          /* ⬅️ 왼쪽 정렬 */
 }
 
-/* 캐러셀 */
-.carousel-multi {
-  width: 100%;
-  overflow: hidden;
+.product-section {
+  flex: 1;
+  margin-left: 20px; /* ✅ 콘텐츠를 더 우측으로 밀기 */
+  padding-top: 60px; /* ✅ 우측 콘텐츠만 위로 여백 추가 */
+}
+
+.product-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 20px; /* ✅ "총 n개의 상품" 텍스트도 우측으로 살짝 이동 */
+}
+
+.product-count {
+  font-size: 14px;
+  color: #555;
+}
+
+/* 인기순 */
+.sort-wrapper {
   position: relative;
-  margin-bottom: 3rem;
-  padding: 0;       /* ✅ 추가 */
-  box-sizing: border-box;
-}
-
-.carousel-track {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
 }
 
-.carousel-card {
-  width: 30%;
-  text-align: center;
-  padding: 0 1rem;
-  box-sizing: border-box;
+.sort-label {
+  margin-right: 4px;
 }
 
-
-.carousel-card img {
-  width: 85%;
-  max-width: 220px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 8px;
+.sort-arrow {
+  font-size: 12px;
 }
 
-.carousel-name {
-  margin-top: 1rem;
-  font-size: 1.1rem;
+/* 드롭다운 박스 */
+.sort-dropdown {
+  position: absolute;
+  top: 24px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 140px;
+  list-style: none;
+}
+
+.sort-dropdown li {
+  padding: 10px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+}
+
+.sort-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+/* ✅ 선택된 항목 강조 */
+.sort-dropdown .selected-option {
+  background-color: black;
+  color: white;
   font-weight: bold;
 }
 
-.carousel-price {
-  color: #444;
-  font-size: 1rem;
+/* ✅ 인기순 아이콘 회전 효과 */
+.sort-icon {
+  font-size: 12px;
+  transition: transform 0.3s ease;
 }
 
-.carousel-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+.sort-icon.rotated {
+  transform: rotate(180deg);
 }
 
-.carousel-buttons button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  border: none;
-  cursor: pointer;
+.sort-dropdown {
+  list-style: none;       /* ✅ 글머리표 제거 */
+  padding-left: 0;
+  margin: 0;
 }
 
-.carousel-buttons button.active {
-  background-color: black;
-}
-
-/* 탭 */
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.tab-button {
-  background: none;
-  border: none;
-  font-weight: 500;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #888;
-}
-
-.tab-button.active {
-  color: black;
-  border-bottom: 2px solid black;
-}
-
-/* 상품 그리드 */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 20px; /* 위아래 여백 넉넉하게 */
 }
 
 .product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding: 10px;
+  min-height: 320px;  /* ✅ 카드 높이 고정 */
+  box-sizing: border-box;
 }
 
 .product-image {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
+  max-width: 180px;
+  height: 200px;       /* ✅ 이미지 높이 고정 (정렬 통일 핵심!) */
+  object-fit: contain; /* 이미지 비율 유지 */
+  margin-bottom: 12px;
 }
 
 .product-name {
-  font-size: 0.95rem;
+  font-size: 14px;
+  min-height: 40px;    /* ✅ 한 줄/두 줄 모두 정렬 맞춤 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .product-price {
-  font-size: 0.9rem;
-  color: gray;
-}
-
-/* 페이지네이션 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  color: #888;
-}
-
-.pagination .active {
-  font-weight: bold;
-  color: black;
-}
-
-.product-page-wrapper {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+  font-size: 13px;
+  color: #333;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './OurStory.css';
 import Header from './Header';
 import chocoVideo from '../assets/Chocolate Milk Moments.mp4';
@@ -32,9 +32,31 @@ const data = [
 
 export default function OurStory() {
   const [current, setCurrent] = useState(0);
+  const sectionsRef = useRef([]);
 
   const prev = () => setCurrent((current - 1 + data.length) % data.length);
   const next = () => setCurrent((current + 1) % data.length);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          } else {
+            entry.target.classList.remove('show'); // 👈 스크롤 벗어나면 다시 제거
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sectionsRef.current.forEach(section => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="our-story-page">
@@ -94,7 +116,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      <section className="info-section why">
+      <section className="info-section why hidden" ref={el => sectionsRef.current[0] = el}>
         <h2>Why We Made This</h2>
         <p className="info-subtitle">초코우유를 사랑하는 모든 이들을 위해</p>
         <p>
@@ -107,7 +129,7 @@ export default function OurStory() {
         </p>
       </section>
 
-      <section className="info-section promise">
+      <section className="info-section promise hidden" ref={el => sectionsRef.current[1] = el}>
         <h2>Our Promise</h2>
         <p className="info-subtitle">Variety. Quality. Delight.</p>
         <p>
@@ -117,8 +139,7 @@ export default function OurStory() {
         </p>
       </section>
 
-      {/* ✅ 마무리 섹션 */}
-      <section className="closing-section">
+      <section className="closing-section hidden" ref={el => sectionsRef.current[2] = el}>
         <h2>Thank You for Visiting</h2>
         <p>
           초코우유를 넘어, 당신의 하루에 작은 위로와 즐거움을 전하고 싶습니다.<br />
