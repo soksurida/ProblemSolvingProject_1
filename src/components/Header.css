@@ -38,6 +38,7 @@
 
 .navbar a:visited {
   color: black;
+<<<<<<< HEAD
 }
 
 /*추가*/
@@ -70,3 +71,6 @@
   border: none;
   cursor: pointer;
 }
+=======
+}
+>>>>>>> 88a6eb542998ad5eeb90763c9ab1079b69ea5304
