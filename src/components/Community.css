@@ -227,13 +227,15 @@ form button {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   position: relative;
   text-align: center;
+  margin-right: 80px;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  position: relative;
 }
 
 .modal-header h3 {
@@ -242,12 +244,28 @@ form button {
   font-weight: bold;
 }
 
-.close-button {
+.x-area {
+  font-size: 28px;         /* 살짝 얇게 */
+  font-weight: 400;        /* 굵기 줄이기 */
+  color: #888;
+  cursor: pointer;
   background: none;
   border: none;
-  font-size: 20px;
-  cursor: pointer;
+  padding: 0;
+  margin-right: 6px;       /* 오른쪽 공간 약간 */
+  line-height: 1;
 }
+
+/* 제목 오른쪽으로 살짝 이동 */
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  padding-left: 10px;
+}
+
+
+
 
 .phone-inputs {
   display: flex;
@@ -457,14 +475,15 @@ form button {
 }
 
 .close-postcode {
-  margin-top: 12px;
+  margin-top: 20px;
   background-color: #333;
   color: white;
-  padding: 10px 18px;
+  padding: 8px 18px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
 }
 
 /* Daum 주소 돋보기 겹침 방지 */
