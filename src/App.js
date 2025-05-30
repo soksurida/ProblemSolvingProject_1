@@ -11,7 +11,6 @@ import SignupPage from './components/SignupPage';
 import CartPage from './components/CartPage';
 import OurStory from './components/OurStory';
 import Community from './components/Community';
-import ProductDetail from './components/ProductDetail';
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
         <Route path="/brand" element={<OurStory />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/community" element={<Community />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </Router>
   );
