@@ -20,7 +20,7 @@ function LoginPage() {
           <label htmlFor="password">비밀번호</label>
           <input type="password" id="password" placeholder="비밀번호" />
 
-          <button className="login-button">Sign In</button>
+          <button className="login-button">Login</button>
 
           <div className="forgot-password">
             <a href="#">비밀번호를 잊어버리셨나요?</a>
