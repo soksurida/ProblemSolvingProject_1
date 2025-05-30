@@ -10,6 +10,7 @@ import SignupPage from './components/SignupPage';
 import CartPage from './components/CartPage';
 import OurStory from './components/OurStory';
 import Community from './components/Community';
+import ProductDetail from './components/ProductDetail';
 
 function App() {
   return (
@@ -24,9 +25,8 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/brand" element={<OurStory />} />
         <Route path="/cart" element={<CartPage />} />
-
-        {/* ✅ 커뮤니티 페이지 경로 추가 */}
         <Route path="/community" element={<Community />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </Router>
   );

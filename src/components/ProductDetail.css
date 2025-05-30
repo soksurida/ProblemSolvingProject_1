@@ -1,0 +1,143 @@
+/* === Product Detail === */
+.product-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  overflow-x: hidden;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.product-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.product-image {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.product-info h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity-control input {
+  width: 48px;
+  height: 32px;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  background-color: white;
+}
+
+
+.product-origin,
+.product-summary {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.purchase-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 800px; /* 화면 기준 넓게 설정 */
+  margin-top: 10px;
+}
+
+.buy-now,
+.add-cart {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.buy-now {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.add-cart {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.origin {
+  color: #888; /* 회색 느낌 */
+  font-size: 0.9rem; /* 조금 더 작은 글씨 */
+  margin-top: 12px;
+  line-height: 1.4;
+}
+.total-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.total-amount {
+  font-weight: bold;
+}
