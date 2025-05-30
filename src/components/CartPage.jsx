@@ -4,12 +4,70 @@ import Header from './Header';
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
 
   // localStorage에서 장바구니 불러오기
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCartItems(savedCart);
+    setSelectedItems(savedCart.map(item => item.id));
+    setSelectAll(true);
   }, []);
+
+  // 전체 선택/해제
+  const handleSelectAll = () => {
+    if (selectAll) {
+      setSelectedItems([]);
+      setSelectAll(false);
+    } else {
+      const allIds = cartItems.map(item => item.id);
+      setSelectedItems(allIds);
+      setSelectAll(true);
+    }
+  };
+
+  // 개별 선택/해제
+  const handleItemSelect = (id) => {
+    if (selectedItems.includes(id)) {
+      const updated = selectedItems.filter(itemId => itemId !== id);
+      setSelectedItems(updated);
+      setSelectAll(false);
+    } else {
+      const updated = [...selectedItems, id];
+      setSelectedItems(updated);
+      if (updated.length === cartItems.length) setSelectAll(true);
+    }
+  };
+
+  // 수량 증가
+  const increaseQuantity = (id) => {
+    const updated = cartItems.map(item =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setCartItems(updated);
+    localStorage.setItem('cart', JSON.stringify(updated));
+  };
+
+  // 수량 감소
+  const decreaseQuantity = (id) => {
+    const updated = cartItems.map(item =>
+      item.id === id && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    setCartItems(updated);
+    localStorage.setItem('cart', JSON.stringify(updated));
+  };
+
+  // 선택 삭제
+  const deleteSelectedItems = () => {
+    const updated = cartItems.filter(item => !selectedItems.includes(item.id));
+    setCartItems(updated);
+    setSelectedItems([]);
+    setSelectAll(false);
+    localStorage.setItem('cart', JSON.stringify(updated));
+  };
 
   // 총 가격 계산
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -23,47 +81,56 @@ function CartPage() {
       <div className="cart-container">
         {/* 왼쪽 영역 */}
         <div className="cart-left">
-          {/* 장바구니 제목 */}
           <div className="cart-steps">장바구니</div>
 
           {/* 선택 영역 */}
           <div className="cart-header">
             <label>
-              <input type="checkbox" checked readOnly /> 전체선택
+              <input
+                type="checkbox"
+                checked={selectAll}
+                onChange={handleSelectAll}
+              /> 전체선택
             </label>
-            <span className="delete-selected">선택 삭제</span>
+            <span className="delete-selected" onClick={deleteSelectedItems}>선택 삭제</span>
           </div>
 
-          {/* 비어있는 경우 */}
+          {/* 비어있을 때 */}
           {cartItems.length === 0 ? (
             <div className="cart-empty">장바구니에 담긴 상품이 없습니다.</div>
           ) : (
             cartItems.map((item, index) => (
               <div className="cart-item" key={index}>
-                <input type="checkbox" checked readOnly />
-                <img src={item.image} alt={item.name} />
+                <input
+                  type="checkbox"
+                  checked={selectedItems.includes(item.id)}
+                  onChange={() => handleItemSelect(item.id)}
+                />
+                <img src={item.image} alt={item.name} className="item-thumbnail" />
+
                 <div className="item-info">
                   <div className="item-name">{item.name}</div>
                   <div className="item-desc">{item.desc}</div>
-                  <div className="item-quantity">
-                    <button>-</button>
-                    <span>{item.quantity}</span>
-                    <button>+</button>
-                  </div>
-                  <div className="item-price">{item.price.toLocaleString()}원</div>
-                  <button className="buy-now">바로구매</button>
                 </div>
+
+                <div className="item-quantity">
+                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => increaseQuantity(item.id)}>+</button>
+                </div>
+
+                <div className="item-price">{item.price.toLocaleString()}원</div>
+                <button className="buy-now">바로구매</button>
               </div>
             ))
           )}
 
-          {/* 버튼 영역 */}
+          {/* 주문 버튼 */}
           <div className="cart-actions">
             <button className="order-selected">선택상품 주문</button>
             <button className="order-all">전체상품 주문하기</button>
           </div>
 
-          {/* 안내 문구 */}
           <p className="cart-note">장바구니에 보관된 상품은 3개월 후에 삭제 됩니다.</p>
         </div>
 
