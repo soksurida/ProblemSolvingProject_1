@@ -1,31 +1,21 @@
 import React from 'react';
 import './RelatedProducts.css';
+import products from '../data/products';
 
-import nesquik from '../images/nesquik.png';
-import hersheys from '../images/hershey\'s.png';
-import cacaolat from '../images/cacaolat.png';
-
-function RelatedProducts() {
-  const products = [
-    { id: 1, name: 'Nesquik', img: nesquik },
-    { id: 2, name: 'Hershey\'s', img: hersheys },
-    { id: 3, name: 'Cacaolat', img: cacaolat },
-  ];
+function RelatedProducts({ currentProductId, currentCategory }) {
+  const sameCategory = products.filter(
+    (p) => p.category === currentCategory && p.id !== currentProductId
+  );
 
   return (
     <section className="related-products">
-      <h3>Related Products</h3>
-      <div className="product-list">
-        {products.map(product => (
-          <div key={product.id} className="product-card">
-            <img
-              src={product.img}
-              alt={product.name}
-              style={{ width: '100px', height: 'auto', objectFit: 'contain', display: 'block' }}
-            />
-
-
-            <p>{product.name}</p>
+      <h3>이런 상품은 어때요?</h3>
+      <div className="horizontal-scroll-wrapper">
+        {sameCategory.map(({ id, name, image, price }) => (
+          <div key={id} className="product-card">
+            <img src={image} alt={name} className="related-product-img" />
+            <p className="product-name">{name}</p>
+            <p className="product-price">{price}</p>
           </div>
         ))}
       </div>

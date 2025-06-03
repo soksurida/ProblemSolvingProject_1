@@ -161,113 +161,10 @@ const renderMyPage = () => (
     </div>
   );
 
-const renderInquiryForm = () => (
-  <div className="inquiry-form">
-    <div className="checkbox-section">
-      <p className="small-title">개인정보 수집 및 보유 동의</p>
-      <table className="consent-table">
-        <thead>
-          <tr><th>수집항목</th><th>수집목적</th><th>보유기간</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>이름, 연락처, 이메일</td>
-            <td>고객문의 접수 및 처리 결과 회신</td>
-            <td>문의 접수일로부터 3년</td>
-          </tr>
-        </tbody>
-      </table>
-      <label className="agree-check">
-        <input type="radio" name="agree" /> 동의
-      </label>
-      <label className="agree-check">
-        <input type="radio" name="agree" /> 동의하지 않음
-      </label>
-      <p className="consent-warning">
-        고객님께서는 개인정보 수집 및 보유에 대한 동의를 거부할 권리가 있습니다.
-        동의하지 않을 경우 고객상담처리 완료안내나 내용의 답변을 드릴 수 없습니다.
-      </p>
-    </div>
-
-    <h3>고객 기본정보</h3>
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="이름" required />
-      <input type="tel" placeholder="연락처" required />
-
-<p className="small-title">주소</p>
-<div className="zip-row">
-  <input
-    type="text"
-    placeholder="우편번호"
-    value={zipcode}
-    readOnly
-  />
-  <button type="button" onClick={() => setShowPostcode(true)}>
-    우편번호 찾기
-  </button>
-</div>
-<input
-  type="text"
-  placeholder="기본주소"
-  value={address}
-  readOnly
-/>
-<input type="text" placeholder="나머지 주소 (선택 입력 가능)" />
-<p className="consent-warning">
-  클레임 제품 회수를 원하실 경우 주소를 입력하시기 바랍니다.
-</p>
-
-
-<p className="small-title">상담분류</p>
-<div className="dropdown-row">
-  <select
-    value={category}
-    onChange={(e) => {
-      setCategory(e.target.value);
-      setSubcategory('');
-    }}
-    required
-  >
-    <option value="">상담분류 선택</option>
-    {Object.keys(categoryOptions).map((cat) => (
-      <option key={cat} value={cat}>{cat}</option>
-    ))}
-  </select>
-
-  <select
-    value={subcategory}
-    onChange={(e) => setSubcategory(e.target.value)}
-    disabled={!category}
-    required
-  >
-    <option value="">세부분류 선택</option>
-    {categoryOptions[category]?.map((sub) => (
-      <option key={sub} value={sub}>{sub}</option>
-    ))}
-  </select>
-</div>
-
-      <input type="text" placeholder="제목" required />
-      <textarea className="same-font" placeholder="내용" rows={5} required></textarea>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button type="submit">상담문의 등록</button>
-      </div>
-    </form>
-  </div>
-);
-
-  const handlePhoneCheck = () => {
-    if (!/^[0-9]{3}$/.test(phone1) || !/^[0-9]{3,4}$/.test(phone2) || !/^[0-9]{4}$/.test(phone3)) {
-      setError('올바른 연락처를 입력해주세요.');
-      return;
-    }
-    setShowModal(false);
-    setError('');
-    setActiveTab('나의 문의내역');
-  };
-
+const renderInquiryForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const form = e.target;
     const name = form[0].value;
     const phone = form[1].value;
@@ -292,18 +189,136 @@ const renderInquiryForm = () => (
     setInquiries(updatedInquiries);
     localStorage.setItem('inquiries', JSON.stringify(updatedInquiries));
     alert('상담이 등록되었습니다.');
+
+    // ✅ 모든 입력 필드 초기화
     form.reset();
-    setZipcode('');    
+    setPhone1('');
+    setPhone2('');
+    setPhone3('');
+    setZipcode('');
     setAddress('');
+    setCategory('');
+    setSubcategory('');
+    setOpenIndex(null);
+    setActiveTab('공지사항');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="inquiry-form">
+      <div className="checkbox-section">
+        <p className="small-title">개인정보 수집 및 보유 동의</p>
+        <table className="consent-table">
+          <thead>
+            <tr><th>수집항목</th><th>수집목적</th><th>보유기간</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>이름, 연락처, 이메일</td>
+              <td>고객문의 접수 및 처리 결과 회신</td>
+              <td>문의 접수일로부터 3년</td>
+            </tr>
+          </tbody>
+        </table>
+        <label className="agree-check">
+          <input type="radio" name="agree" /> 동의
+        </label>
+        <label className="agree-check">
+          <input type="radio" name="agree" /> 동의하지 않음
+        </label>
+        <p className="consent-warning">
+          고객님께서는 개인정보 수집 및 보유에 대한 동의를 거부할 권리가 있습니다.
+          동의하지 않을 경우 고객상담처리 완료안내나 내용의 답변을 드릴 수 없습니다.
+        </p>
+      </div>
+
+      <h3>고객 기본정보</h3>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="이름" required />
+        <input type="tel" placeholder="연락처" required />
+
+        <p className="small-title">주소</p>
+        <div className="zip-row">
+          <input
+            type="text"
+            placeholder="우편번호"
+            value={zipcode}
+            readOnly
+          />
+          <button type="button" onClick={() => setShowPostcode(true)}>
+            우편번호 찾기
+          </button>
+        </div>
+        <input
+          type="text"
+          placeholder="기본주소"
+          value={address}
+          readOnly
+        />
+        <input type="text" placeholder="나머지 주소 (선택 입력 가능)" />
+        <p className="consent-warning">
+          클레임 제품 회수를 원하실 경우 주소를 입력하시기 바랍니다.
+        </p>
+
+        <p className="small-title">상담분류</p>
+        <div className="dropdown-row">
+          <select
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+              setSubcategory('');
+            }}
+            required
+          >
+            <option value="">상담분류 선택</option>
+            {Object.keys(categoryOptions).map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+
+          <select
+            value={subcategory}
+            onChange={(e) => setSubcategory(e.target.value)}
+            disabled={!category}
+            required
+          >
+            <option value="">세부분류 선택</option>
+            {categoryOptions[category]?.map((sub) => (
+              <option key={sub} value={sub}>{sub}</option>
+            ))}
+          </select>
+        </div>
+
+        <input type="text" placeholder="제목" required />
+        <textarea className="same-font" placeholder="내용" rows={5} required></textarea>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button type="submit">상담문의 등록</button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+
+  const handlePhoneCheck = () => {
+    if (!/^[0-9]{3}$/.test(phone1) || !/^[0-9]{3,4}$/.test(phone2) || !/^[0-9]{4}$/.test(phone3)) {
+      setError('올바른 연락처를 입력해주세요.');
+      return;
+    }
+    setShowModal(false);
+    setError('');
+    setActiveTab('나의 문의내역');
   };
 
   const renderModal = () => (
     <div className="modal-backdrop">
       <div className="modal-box">
         <div className="modal-header">
-          <h3>나의 문의 내역 확인</h3>
-          <button className="close-button" onClick={() => setShowModal(false)}>×</button>
-        </div>
+        <h3 className="modal-title">나의 문의 내역 확인</h3>
+        <div className="x-area" onClick={() => setShowModal(false)}>×</div>
+      </div>
+
         <p>문의하신 연락처를 입력하시기 바랍니다.</p>
 
         <div className="phone-inputs">
@@ -403,7 +418,6 @@ const renderInquiryForm = () => (
 
       {showModal && renderModal()}
 
-      {/* ✅ 여기다 넣어! */}
       {showPostcode && (
         <div className="modal-backdrop">
           <div className="modal-box">
@@ -414,7 +428,10 @@ const renderInquiryForm = () => (
                 setShowPostcode(false);
               }}
             />
-           <button className="close-postcode" onClick={() => setShowPostcode(false)}>닫기</button> {/* ✅ class 추가 */}
+           <button className="close-button" onClick={() => setShowModal(false)} aria-label="닫기">
+  ×
+</button>
+
           </div>
         </div>
       )}
@@ -423,5 +440,4 @@ const renderInquiryForm = () => (
     </div>
   );
 }
-
 export default Community;

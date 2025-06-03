@@ -5,7 +5,7 @@ const products = [
     price: '1,200원',
     image: '/images/nesquik.png',
     category: '국내제품',
-    description: '달콤한 맛이 매력적인 초콜릿 음료입니다.'
+    description: '달콤한 맛이 매력적인 초콜릿 음료.'
   },
   {
     id: 2,
@@ -13,13 +13,13 @@ const products = [
     price: '1,200원',
     image: '/images/hershey.png',
     category: '해외제품',
-    description: '진한 허쉬 초콜릿 풍미가 느껴지는 드링크입니다.'
+    description: '진한 허쉬 초콜릿 풍미가 느껴지는 드링크.'
   },
   {
     id: 3,
     name: '연세우유 마카다미아 초코우유 190ml',
     price: '1,600원',
-    image: 'images/y.png',
+    image: '/images/y.png',
     category: '국내제품',
     description: '마카다미아와 초콜릿의 고소하고 부드러운 조화.'
   },
@@ -29,7 +29,7 @@ const products = [
     price: '1,650원',
     image: '/images/seoulmilk.jpg',
     category: '국내제품',
-    description: '서울우유의 정통 초콜릿 우유입니다.'
+    description: '서울우유의 정통 초콜릿 우유.'
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const products = [
     price: '1,400원',
     image: '/images/bingrae2.png',
     category: '국내제품',
-    description: '왕실 느낌의 고급 초콜릿 풍미를 담았습니다.'
+    description: '왕실 고급 초콜릿의 풍미.'
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const products = [
     price: '1,000원',
     image: '/images/binggrae.png',
     category: '국내제품',
-    description: '당류를 줄인 건강한 초콜릿 우유입니다.'
+    description: '당류를 줄인 건강한 초콜릿 우유.'
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const products = [
     price: '1,000원',
     image: '/images/sangha.png',
     category: '국내제품',
-    description: '유기농 우유로 만든 순한 코코아 드링크.'
+    description: '유기농 우유로 만든 순한 코코아 드링크크.'
   },
   {
     id: 11,
@@ -109,7 +109,7 @@ const products = [
     price: '2,300원',
     image: '/images/&up.png',
     category: '국내제품',
-    description: '카페 스타일 초코라떼를 간편하게 즐기세요.'
+    description: '집에서 간편하게 즐길 수 있는 카페 스타일 초코라떼.'
   },
   {
     id: 15,

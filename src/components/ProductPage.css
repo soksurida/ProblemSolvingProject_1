@@ -164,3 +164,8 @@
   font-size: 13px;
   color: #333;
 }
+
+.product-card-link {
+  text-decoration: none;  /* 밑줄 제거 */
+  color: inherit;          /* 부모로부터 색상 상속 (보통 검정) */
+}

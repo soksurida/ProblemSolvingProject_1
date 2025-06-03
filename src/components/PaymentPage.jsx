@@ -1,5 +1,5 @@
-import React from 'react';
-import './PaymentPage.css';
+import React, { useEffect, useRef } from 'react';
+import './OurStory.css';
 import Header from './Header';
 import Footer from './Footer';
 
