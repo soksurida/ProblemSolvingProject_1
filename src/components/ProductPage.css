@@ -1,24 +1,24 @@
 .product-main {
   display: flex;
   padding: 40px 30px;
-  gap: 150px; /* 좌측 필터와 우측 콘텐츠 간 여백 확보 */
+  gap: 150px;
   align-items: flex-start;
 }
 
 .product-sidebar {
   width: 160px;
-  position: sticky;    /* ✅ 스크롤 고정 */
-  top: 150px;           /* 상단에서 100px 아래에 고정됨 */
+  position: sticky;
+  top: 150px;
   align-self: flex-start;
 }
 
 .sidebar-title {
-  font-size: 22px;           /* ✅ "제품" 제목 더 크게 */
+  font-size: 22px;
   font-weight: normal !important;
   margin-bottom: 25px;
   padding-bottom: 12px;
   border-bottom: 1px solid #000;
-  width: 200%;               /* ✅ 검은 밑줄 바 길이 2배 */
+  width: 200%;
 }
 
 .filter-list {
@@ -32,7 +32,7 @@
   cursor: pointer;
   color: #111;
   font-size: 17px;
-  margin-bottom: 20px; /* ✅ 항목 간 간격 조절 */
+  margin-bottom: 20px;
 }
 
 .filter-item.active {
@@ -41,8 +41,8 @@
 
 .product-section {
   flex: 1;
-  margin-left: 20px; /* ✅ 콘텐츠를 더 우측으로 밀기 */
-  padding-top: 60px; /* ✅ 우측 콘텐츠만 위로 여백 추가 */
+  margin-left: 20px;
+  padding-top: 60px;
 }
 
 .product-topbar {
@@ -50,7 +50,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  margin-left: 20px; /* ✅ "총 n개의 상품" 텍스트도 우측으로 살짝 이동 */
+  margin-left: 20px;
 }
 
 .product-count {
@@ -58,7 +58,6 @@
   color: #555;
 }
 
-/* 인기순 */
 .sort-wrapper {
   position: relative;
   display: flex;
@@ -77,7 +76,6 @@
   font-size: 12px;
 }
 
-/* 드롭다운 박스 */
 .sort-dropdown {
   position: absolute;
   top: 24px;
@@ -103,14 +101,12 @@
   background-color: #f0f0f0;
 }
 
-/* ✅ 선택된 항목 강조 */
 .sort-dropdown .selected-option {
   background-color: black;
   color: white;
   font-weight: bold;
 }
 
-/* ✅ 인기순 아이콘 회전 효과 */
 .sort-icon {
   font-size: 12px;
   transition: transform 0.3s ease;
@@ -121,7 +117,7 @@
 }
 
 .sort-dropdown {
-  list-style: none;       /* ✅ 글머리표 제거 */
+  list-style: none;
   padding-left: 0;
   margin: 0;
 }
@@ -129,7 +125,7 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px 20px; /* 위아래 여백 넉넉하게 */
+  gap: 60px 20px;
 }
 
 .product-card {
@@ -138,21 +134,49 @@
   align-items: center;
   text-align: center;
   padding: 10px;
-  min-height: 320px;  /* ✅ 카드 높이 고정 */
+  min-height: 320px;
   box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+
+  /* ✅ 기본 커서는 화살표 */
+  cursor: default;
+}
+
+.product-card:hover {
+  box-shadow: none;
+  transform: none;
+  cursor: default;
+}
+
+/* ✅ 클릭 가능한 영역에만 커서 포인터 */
+.product-card-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* ✅ 링크 안의 이미지도 커서 포인터 적용 */
+.product-card-link img {
+  cursor: pointer;
 }
 
 .product-image {
   width: 100%;
   max-width: 180px;
-  height: 200px;       /* ✅ 이미지 높이 고정 (정렬 통일 핵심!) */
-  object-fit: contain; /* 이미지 비율 유지 */
+  height: 200px;
+  object-fit: contain;
   margin-bottom: 12px;
 }
 
 .product-name {
   font-size: 14px;
-  min-height: 40px;    /* ✅ 한 줄/두 줄 모두 정렬 맞춤 */
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,9 +187,4 @@
 .product-price {
   font-size: 13px;
   color: #333;
-}
-
-.product-card-link {
-  text-decoration: none;  /* 밑줄 제거 */
-  color: inherit;          /* 부모로부터 색상 상속 (보통 검정) */
 }
