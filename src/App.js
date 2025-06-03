@@ -10,6 +10,7 @@ import PaymentPage from './components/PaymentPage'; //임시 결제창 페이지
 import ProductDetail from './components/ProductDetail'; // ✅ 상세페이지 컴포넌트 추가
 import ProductPage from './components/ProductPage';
 import SignupPage from './components/SignupPage';
+import GuestAgreement from './components/GuestAgreement';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} /> {/* ✅ 상세페이지 라우팅 추가 */}
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/guest" element={<GuestAgreement />} />
 
       </Routes>
     </Router>
