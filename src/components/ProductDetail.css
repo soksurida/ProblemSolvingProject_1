@@ -23,10 +23,13 @@
 }
 
 .product-detail-image {
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
   height: auto;
+  object-fit: contain; /* 또는 cover */
+  aspect-ratio: 1 / 1;  /* 정사각형 비율 유지하고 싶을 때 */
 }
+
 
 .product-info {
   display: flex;
@@ -140,4 +143,18 @@
 
 .total-amount {
   font-weight: bold;
+}
+
+.product-card {
+  text-align: center;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 180px; /* ✅ 이미지에 맞게 넓이 조정 */
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* ✅ 호버 확대 효과 */
 }
