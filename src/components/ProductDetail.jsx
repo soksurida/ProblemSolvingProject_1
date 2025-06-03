@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
-import LoginModal from '../components/LoginModal';
-import { useParams, useNavigate } from 'react-router-dom'; // ✅ useNavigate 추가
-import products from '../data/products'; // 상품 배열 import
+import { useParams, useNavigate } from 'react-router-dom';
+import products from '../data/products';
+
 import Header from './Header';
-import './ProductDetail.css';
+import LoginModal from '../components/LoginModal';
+import CartConfirmModal from './CartConfirmModal';
 import RelatedProducts from './RelatedProducts';
 import ProductInfo from './ProductInfo';
-
+import './ProductDetail.css';
 
 function ProductDetail() {
-  const { id } = useParams(); // URL에서 상품 ID 받아오기
-  const navigate = useNavigate(); // ✅ 페이지 이동용 훅
-  const product = products.find(p => p.id === Number(id)); // 해당 상품 찾기
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const product = products.find(p => p.id === Number(id));
   const [quantity, setQuantity] = useState(1);
+
+  const [modalOpen, setModalOpen] = useState(false); // 로그인 모달
+  const [showCartModal, setShowCartModal] = useState(false); // 장바구니 확인 모달
+
+  if (!product) return <p>존재하지 않는 상품입니다.</p>;
+
+  const priceNumber = parseInt(product.price.replace(/[^\d]/g, ''));
 
   const increase = () => setQuantity(quantity + 1);
   const decrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
-  const [modalOpen, setModalOpen] = useState(false);
-
-  if (!product) return <p>존재하지 않는 상품입니다.</p>;
-
-  // 가격에서 숫자 추출
-  const priceNumber = parseInt(product.price.replace(/[^\d]/g, ''));
-
-  // ✅ 장바구니 담기 함수
   const addToCart = () => {
     const cartItem = {
       id: product.id,
@@ -35,30 +35,24 @@ function ProductDetail() {
       desc: product.description || '기분이 좋아지는 초코우유!'
     };
 
-    // 기존 장바구니 불러오기
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // 동일한 상품 있는지 체크
     const existingIndex = existingCart.findIndex(item => item.id === cartItem.id);
 
     if (existingIndex !== -1) {
-      // 이미 있으면 수량만 증가
       existingCart[existingIndex].quantity += quantity;
     } else {
-      // 새 상품이면 추가
       existingCart.push(cartItem);
     }
 
-    // localStorage에 저장
     localStorage.setItem('cart', JSON.stringify(existingCart));
 
-    // 장바구니 페이지로 이동
-    navigate('/cart');
+    // ✅ 장바구니 안내 모달 띄우기
+    setShowCartModal(true);
   };
 
-    return (
+  return (
     <>
-      <Header /> {/* ✅ 헤더 추가 */}
+      <Header />
       <section className="product-detail">
         <div className="product-content">
           <img className="product-detail-image" src={product.image} alt={product.name} />
@@ -79,7 +73,7 @@ function ProductDetail() {
             </p>
 
             <p className="origin">
-              원산지 : {product.category.includes('해외') ? '해외' : '한국'}<br />
+              원산지 : {product.category.includes('해외') ? '해외' : '한국'}
             </p>
 
             <div className="purchase-buttons">
@@ -87,25 +81,26 @@ function ProductDetail() {
                 바로 구매하기
               </button>
 
-              <button className="detail-add-cart" onClick={() => setModalOpen(true)}>
+              <button className="detail-add-cart" onClick={addToCart}>
                 장바구니 담기
               </button>
-
             </div>
           </div>
         </div>
       </section>
-      {modalOpen && <LoginModal onClose={() => setModalOpen(false)} />}
 
-      <ProductInfo />   {/* ✅ 상세 설명 페이지 연결 */}
-      <RelatedProducts     
+      {/* 모달 연결 */}
+      {modalOpen && <LoginModal onClose={() => setModalOpen(false)} />}
+      {showCartModal && <CartConfirmModal onClose={() => setShowCartModal(false)} />}
+
+      {/* 하단 연결 */}
+      <ProductInfo />
+      <RelatedProducts
         currentProductId={product.id}
         currentCategory={product.category}
-      />{/* ✅ 관련 상품 페이지 연결 */}
-
+      />
     </>
   );
-
 }
 
 export default ProductDetail;
