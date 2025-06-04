@@ -124,7 +124,7 @@ function PaymentPage() {
                   <input type="checkbox" /> 위 상품의 판매조건을 명확히 확인하였으며, 구매 진행에 동의합니다.
                 </label>
                 <ul className="payment-agreement-detail">
-                  <li>할인쿠폰 적용 후 총 결제 금액이 3만원 이상일 경우 무료 배송이 적용됩니다.</li>
+                  <li>할인쿠폰 적용 후 총 결제 금액이 2만원 이상일 경우 무료 배송이 적용됩니다.</li>
                   <li>배송 정보가 동일할 경우 자동으로 합배송됩니다.</li>
                   <li>예) 2건 중 1건 환불 시 배송비는 환불 제외될 수 있음</li>
                   <li>* 단, 합배송 개별 신청은 불가능합니다.</li>
