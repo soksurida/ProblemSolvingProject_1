@@ -1,0 +1,42 @@
+.cart-modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.cart-modal-content {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 32px;
+  text-align: center;
+  width: 320px;
+}
+
+.cart-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-black {
+  background: black;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: white;
+  border: 1px solid #aaa;
+  color: black;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}

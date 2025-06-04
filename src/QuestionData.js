@@ -1,82 +1,83 @@
+// ✅ QuestionData.js (모든 결과 타입 균등 분포, 총 16개 결과 타입)
 const questionData = [
   {
-    question: '초코우유를 고를 때 가장 중요하게 생각하는 건?',
+    question: '초코우유에 끌리는 첫인상은?',
     answers: [
-      { text: '깊고 진한 맛', type: ['Velvet Noir', 'Nightfall Dark', 'Espresso Bitter'] },
-      { text: '부드럽고 달콤한 맛', type: ['Creamy Muse', 'Marshmallow Soul', 'Sweet Harmony'] },
-      { text: '깔끔하고 담백한 맛', type: ['Choco Minimalist', 'No Sugar Please', 'Silken Balance'] }
+      { text: '고급스럽고 진한 느낌', type: 'Velvet Noir' },
+      { text: '귀엽고 부드러운 느낌', type: 'Creamy Muse' },
+      { text: '깔끔하고 정돈된 느낌', type: 'Choco Minimalist' }
     ]
   },
   {
-    question: '초코우유에 곁들인다면 가장 좋은 재료는?',
+    question: '초코우유와 가장 어울리는 분위기는?',
     answers: [
-      { text: '견과류나 고소한 재료', type: ['Nutty Realist', 'Silken Balance'] },
-      { text: '과일 향이나 시럽', type: ['Fruity Spark', 'Choco Artist'] },
-      { text: '아무것도 없이 클래식하게', type: ['Velvet Noir', 'Cold Brew Choco'] }
+      { text: '고요한 밤의 감성', type: 'Nightfall Dark' },
+      { text: '산뜻한 아침 햇살', type: 'Fruity Spark' },
+      { text: '달콤한 오후의 여유', type: 'Sweet Harmony' }
     ]
   },
   {
-    question: '친구들이 묘사하는 내 성격은?',
+    question: '가장 좋아하는 디저트는?',
     answers: [
-      { text: '부드럽고 따뜻하다', type: ['Creamy Muse', 'Marshmallow Soul'] },
-      { text: '쿨하고 시크하다', type: ['Cold Brew Choco', 'Nightfall Dark'] },
-      { text: '엉뚱하고 개성 있다', type: ['Choco Artist', 'Hidden Spice'] }
+      { text: '에스프레소 브라우니', type: 'Espresso Bitter' },
+      { text: '마시멜로 쿠키', type: 'Marshmallow Soul' },
+      { text: '카라멜 푸딩', type: 'Caramel Hug' }
     ]
   },
   {
-    question: '초코우유를 마시는 나만의 스타일은?',
+    question: '친구들이 묘사하는 당신의 이미지?',
     answers: [
-      { text: '느긋하게 여유 있게 음미', type: ['Milky Dreamer', 'Nightfall Dark'] },
-      { text: '상황에 따라 다르게 즐김', type: ['Fruity Spark', 'Sweet Harmony'] },
-      { text: '깔끔하고 빠르게 마심', type: ['Choco Minimalist', 'No Sugar Please'] }
+      { text: '실용적인 리얼리스트', type: 'Nutty Realist' },
+      { text: '몽글몽글한 몽상가', type: 'Milky Dreamer' },
+      { text: '개성 있는 예술가', type: 'Choco Artist' }
     ]
   },
   {
-    question: '새로운 초코우유를 발견했을 때 나는?',
+    question: '초코우유 마시는 스타일은?',
     answers: [
-      { text: '신중하게 리뷰를 본다', type: ['No Sugar Please', 'Nutty Realist'] },
-      { text: '독특해 보이면 바로 시도!', type: ['Choco Artist', 'Fruity Spark'] },
-      { text: '너무 튀는 건 피한다', type: ['Silken Balance', 'Velvet Noir'] }
+      { text: '여유롭게 음미', type: 'Silken Balance' },
+      { text: '단번에 시원하게', type: 'Cold Brew Choco' },
+      { text: '그날의 기분 따라', type: 'Hidden Spice' }
     ]
   },
   {
-    question: '내가 초코우유라면 어떤 타입일까?',
+    question: '초코우유 패키지에서 끌리는 요소는?',
     answers: [
-      { text: '깊고 진한 다크 초코', type: ['Velvet Noir', 'Espresso Bitter'] },
-      { text: '포근한 마시멜로우 초코', type: ['Marshmallow Soul', 'Caramel Hug'] },
-      { text: '상큼한 과일 초코', type: ['Fruity Spark', 'Choco Artist'] }
+      { text: '심플하고 세련됨', type: 'No Sugar Please' },
+      { text: '몽글몽글한 부드러움', type: 'Marshmallow Soul' },
+      { text: '컬러풀하고 발랄함', type: 'Choco Artist' }
     ]
   },
   {
-    question: '가장 마음에 드는 초코우유 패키지는?',
+    question: '당신의 이상적인 하루는?',
     answers: [
-      { text: '클래식하고 심플한 패키지', type: ['Choco Minimalist', 'No Sugar Please'] },
-      { text: '아기자기하고 귀여운 패키지', type: ['Creamy Muse', 'Marshmallow Soul'] },
-      { text: '컬러풀하고 유니크한 패키지', type: ['Choco Artist', 'Fruity Spark'] }
+      { text: '한적한 공원 산책', type: 'Silken Balance' },
+      { text: '분주한 카페 탐방', type: 'Espresso Bitter' },
+      { text: '소파 위 휴식', type: 'Caramel Hug' }
     ]
   },
   {
-    question: '초콜릿을 고를 때 나는?',
+    question: '선호하는 초콜릿 스타일은?',
     answers: [
-      { text: '쌉싸름한 다크초콜릿을 선호', type: ['Espresso Bitter', 'Nightfall Dark'] },
-      { text: '달콤한 밀크초콜릿을 선호', type: ['Creamy Muse', 'Sweet Harmony'] },
-      { text: '특별한 재료가 들어간 초콜릿을 선호', type: ['Hidden Spice', 'Choco Artist'] }
+      { text: '다크 초콜릿', type: 'Nightfall Dark' },
+      { text: '밀크 초콜릿', type: 'Creamy Muse' },
+      { text: '프루티 초콜릿', type: 'Fruity Spark' }
     ]
   },
   {
-    question: '초코우유를 마시기 가장 좋은 순간은?',
+    question: '스트레스를 푸는 방법은?',
     answers: [
-      { text: '조용한 밤, 혼자만의 시간에', type: ['Nightfall Dark', 'Velvet Noir'] },
-      { text: '활기찬 아침이나 오후에', type: ['Fruity Spark', 'Cold Brew Choco'] },
-      { text: '소중한 사람과 함께할 때', type: ['Caramel Hug', 'Sweet Harmony'] }
+      { text: '혼자만의 시간 갖기', type: 'Velvet Noir' },
+      { text: '재밌는 영상 보기', type: 'Cold Brew Choco' },
+      { text: '감정 표현하기', type: 'Milky Dreamer' }
     ]
   },
   {
     question: '평소 나의 성향은?',
     answers: [
-      { text: '현실적이고 실용적이다', type: ['Nutty Realist', 'No Sugar Please'] },
-      { text: '감성적이고 부드럽다', type: ['Creamy Muse', 'Milky Dreamer'] },
-      { text: '자유롭고 독특하다', type: ['Choco Artist', 'Hidden Spice'] }
+      { text: '논리적인 실용파', type: 'Nutty Realist' },
+      { text: '감성적인 몽상가', type: 'Sweet Harmony' },
+      { text: '자유로운 혼종', type: 'Hidden Spice' }
     ]
   }
 ];

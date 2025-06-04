@@ -67,7 +67,7 @@
   justify-content: space-between;
   padding: 0 40px;
   gap: 40px;
-  margin-top: 20px;  /* ✅ 헤더와 전체 간격 */
+  margin-top: 20px;
 }
 
 .cart-left {
@@ -111,5 +111,80 @@
   border-radius: 6px;
   margin-top: 20px;
   border: none;
+  cursor: pointer;
+}
+
+/* ✅ 수정된 상품 아이템 레이아웃 */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.item-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 180px;
+  margin-right: 20px;
+}
+
+.item-name {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.item-desc {
+  font-size: 12px;
+  color: #666;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 20px;
+}
+
+.item-quantity button {
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+}
+
+.item-price {
+  min-width: 80px;
+  text-align: right;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.buy-now {
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: auto;
+  min-width: fit-content;
+  display: inline-block; /* ✅ 핵심: 줄어들게 만듦 */
+}
+
+.delete-selected {
   cursor: pointer;
 }

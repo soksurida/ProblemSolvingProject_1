@@ -1,3 +1,7 @@
+/* ======================== */
+/* 공통: GetYourChocoPage + QuestionPage + ResultPage */
+/* ======================== */
+
 /* 전체 페이지 */
 .getyourchoco-page {
   display: flex;
@@ -19,54 +23,63 @@
   z-index: 1000;
 }
 
-/* 왼쪽 로고 */
 .logo {
   font-size: 22px;
   font-weight: bold;
 }
 
-/* 가운데 링크 그룹 */
 .nav-center {
   display: flex;
-  gap: 160px; /* ✅ 간격 더 벌림 */
+  gap: 160px;
   font-size: 16px;
   font-weight: 500;
-  margin-left: -10px; /* ✅ 왼쪽으로 더 붙게 */
+  margin-left: -10px;
 }
 
-/* 메인 콘텐츠 중앙 정렬 */
+.nav-icon-group {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.icon-img,
+.login-icon {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* 메인 콘텐츠 */
 .main-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* ✅ 중앙에서 위로 밀기 */
-  padding-top: 200px; /* ✅ 원하는 만큼 위로 올림 */
+  justify-content: flex-start;
+  padding-top: 200px;
   flex-grow: 1;
   text-align: center;
 }
 
-/* 메인 제목 */
 .main-title {
   font-size: 48px;
   font-weight: 400;
   margin-bottom: 0px;
-  letter-spacing: 1px; /* ✅ 글자 사이 간격 추가 */
+  letter-spacing: 1px;
 }
 
-/* 서브 제목 */
 .sub-title {
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 40px;
-  letter-spacing: 2px; /* ✅ 글자 사이 간격 추가 */
+  letter-spacing: 2px;
 }
 
-/* Play 버튼 */
 .play-button {
   padding: 12px 30px;
   font-size: 16px;
   font-weight: 100;
-  letter-spacing: 1px; /* ✅ 글자 사이 간격 추가 */
+  letter-spacing: 1px;
   background-color: #000;
   color: white;
   border: none;
@@ -80,36 +93,241 @@
   transform: scale(1.05);
 }
 
-/* 로딩화면 스타일 */
 .loading-screen {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  min-height: 70vh; /* 메인 영역만큼 차지 */
+  min-height: 70vh;
   font-size: 24px;
   font-weight: 400;
   color: #333;
 }
 
-/* 아이콘 그룹 (검색 + 장바구니 + 로그인) */
-.nav-icon-group {
+/* ============================== */
+/* 테스트 인트로 화면 */
+/* ============================== */
+
+.question-page {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 25px; /* 아이콘 사이 간격 */
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #faf6ed, #f4ead2);
 }
 
-/* 공통 아이콘 이미지 스타일 */
-.nav-icon-group {
+.intro-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 28px;
+  transform: translateY(-35px);
 }
 
-.icon-img,
-.login-icon {
-  width: 17px;
-  height: 17px;
-  object-fit: contain;
+.logo-text {
+  font-size: 20px;
+  font-weight: 450;
+  margin-bottom: 17px;
+  text-align: center;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.start-screen h1 {
+  font-size: 34px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.start-screen p {
+  font-size: 19px;
+  margin: 3px 0;
+}
+
+.start-button {
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #6b4c36;
+  color: white;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.start-button:hover {
+  background-color: #825d43;
+  transform: scale(1.05);
+}
+
+/* ============================== */
+/* 질문 화면 */
+/* ============================== */
+
+.test-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 90px;
+}
+
+.question-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.progress-bar-outer {
+  width: 500px;
+  height: 14px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  margin: 20px auto 40px;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background-color: #6b4c36;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.answer-button {
+  width: 310px;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.answer-button:nth-child(1) { background: #f5e0c3; }
+.answer-button:nth-child(2) { background: #d2b48c; }
+.answer-button:nth-child(3) { background: #95693f; color: black; }
+
+.answer-button:hover {
+  transform: scale(1.05);
+}
+
+/* ============================== */
+/* 결과 화면 */
+/* ============================== */
+
+.result-page {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 25px;
+  max-width: 400px;
+  padding-bottom: 35px;  /* 전체화면 길이 */
+}
+
+.result-header {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.intro-text {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 18px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.result-type {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.0;
+  margin-top: 0;
+}
+
+.result-description {
+  font-size: 16px;
+  margin: 5px 0 8px;
+  line-height: 1.2;
+}
+
+.result-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;  /* 다시 테스트하기 버튼 높이 조정 */
+}
+.result-image {
+  margin-bottom: 5px;
+}
+
+.button {
+  padding: 14px 28px;
+  font-size: 15.5px;
+  background-color: #c6ae8f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #c6ae8f;
+  transform: scale(1.05);
+}
+
+.button.secondary {
+  background-color: #866a50;
+  color: white;
+}
+
+.button.secondary:hover {
+  background-color: #866a50;
+  transform: scale(1.05);
+}
+
+.share-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.share-button {
+  background-color: #4c3f2f;
+  color: white;
+  font-size: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.share-button:hover {
+  background-color: #3a2f22;
+  transform: scale(1.05);
 }

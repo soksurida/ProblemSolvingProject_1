@@ -1,0 +1,67 @@
+.guest-agreement-wrapper {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.checkbox-wrapper label {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.subtext {
+  font-size: 14px;
+  color: gray;
+  margin-left: 10px;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 20px;
+  color: lightgray;
+}
+
+.info-text {
+  color: #888;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+button.cancel,
+button.agree {
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+}
+
+button.cancel {
+  background-color: #eee;
+}
+
+button.agree {
+  background-color: black;
+  color: white;
+}
+
+button.agree:disabled {
+  background-color: #ccc;
+}

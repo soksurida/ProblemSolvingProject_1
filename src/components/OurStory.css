@@ -122,37 +122,32 @@
   color: #000;
 }
 
+/* 4가지 */
 .our-cards {
   display: flex;
+  flex-wrap: wrap;            /* 줄바꿈 허용 */
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;                  /* ✅ 카드 간격 증가 */
   position: relative;
   width: 100%;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
 .our-card {
   width: 240px;
-  transition: all 0.4s ease;
-  opacity: 0.3;
-  transform: scale(0.8);
   text-align: center;
-}
-
-.our-card.center {
+  transition: transform 0.4s ease, opacity 0.4s ease;
   transform: scale(1);
+  opacity: 0.9;
+  cursor: default;            /* ✅ 마우스 커서 반응 없도록 */
+}
+
+.our-card:hover {
+  transform: scale(1.1);      /* ✅ 호버 시 확대 효과 유지 */
   opacity: 1;
-}
-
-.our-card.left,
-.our-card.right {
-  opacity: 0.6;
-  transform: scale(0.9);
-}
-
-.our-card.hidden {
-  display: none;
 }
 
 .our-circle-img {
@@ -160,8 +155,9 @@
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
+  transition: transform 0.3s ease;
 }
 
 .our-card-title {
@@ -175,6 +171,7 @@
   font-size: 0.95rem;
   color: #555;
   line-height: 1.6;
+  margin: 0;
 }
 
 /* WHY / PROMISE / THANK YOU */
