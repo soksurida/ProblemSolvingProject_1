@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './CartPage.css';
 import Header from './Header';
 import LoginModal from './LoginModal';
+import { useNavigate } from 'react-router-dom'; // ✅ 상세페이지 이동용 import 추가
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate(); // ✅ navigate 훅 사용
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -65,9 +67,8 @@ function CartPage() {
     localStorage.setItem('cart', JSON.stringify(updated));
   };
 
-  // ✅ 가격 계산
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const deliveryFee = totalPrice >= 20000 ? 0 : 2500;  // ✅ 배송비 조건
+  const deliveryFee = totalPrice >= 20000 ? 0 : 2500;
   const finalPrice = totalPrice + deliveryFee;
 
   return (
@@ -75,7 +76,6 @@ function CartPage() {
       <Header />
 
       <div className="cart-container">
-        {/* 왼쪽 영역 */}
         <div className="cart-left">
           <div className="cart-steps">장바구니</div>
 
@@ -100,10 +100,23 @@ function CartPage() {
                   checked={selectedItems.includes(item.id)}
                   onChange={() => handleItemSelect(item.id)}
                 />
-                <img src={item.image} alt={item.name} className="item-thumbnail" />
+                {/* ✅ 클릭 시 상세페이지로 이동 */}
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="item-thumbnail"
+                  onClick={() => navigate(`/product/${item.id}`)}
+                  style={{ cursor: 'pointer' }}
+                />
 
                 <div className="item-info">
-                  <div className="item-name">{item.name}</div>
+                  <div
+                    className="item-name"
+                    onClick={() => navigate(`/product/${item.id}`)} // ✅ 이름 클릭해도 이동
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {item.name}
+                  </div>
                   <div className="item-desc">{item.desc}</div>
                 </div>
 
@@ -113,14 +126,12 @@ function CartPage() {
                   <button onClick={() => increaseQuantity(item.id)}>+</button>
                 </div>
 
-                {/* ✅ 수량 반영된 가격 */}
                 <div className="item-price">{(item.price * item.quantity).toLocaleString()}원</div>
                 <button className="buy-now" onClick={() => setShowModal(true)}>바로구매</button>
               </div>
             ))
           )}
 
-          {/* 주문 버튼 */}
           <div className="cart-actions">
             <button className="order-selected" onClick={() => setShowModal(true)}>선택상품 주문</button>
             <button className="order-all" onClick={() => setShowModal(true)}>전체상품 주문하기</button>
@@ -129,7 +140,6 @@ function CartPage() {
           <p className="cart-note">장바구니에 보관된 상품은 3개월 후에 삭제 됩니다.</p>
         </div>
 
-        {/* 결제 요약 영역 */}
         <div className="cart-right">
           <div className="summary">
             <div className="summary-row">
@@ -139,13 +149,10 @@ function CartPage() {
             <div className="summary-row"><span>상품 할인</span><span>-0원</span></div>
             <div className="summary-row"><span>포장비</span><span>+0원</span></div>
             <div className="summary-row"><span>부가 쇼핑백</span><span>+0원</span></div>
-
-            {/* ✅ 조건에 따라 무료배송 표시 */}
             <div className="summary-row">
               <span>배송비</span>
               <span>{deliveryFee === 0 ? "무료배송" : `+${deliveryFee.toLocaleString()}원`}</span>
             </div>
-
             <div className="summary-total">
               <span>결제 예상 금액</span>
               <span>{finalPrice.toLocaleString()}원</span>

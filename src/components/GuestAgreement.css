@@ -1,20 +1,18 @@
-/* GuestAgreement.css */
-
-.guest-agreement-wrapper {
+.guest-wrapper {
   max-width: 700px;
   margin: 60px auto;
   padding: 20px;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-.checkbox-wrapper {
+.guest-checkbox-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin: 40px 0;
 }
 
-.checkbox-wrapper label {
+.guest-checkbox-wrapper label {
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -22,130 +20,54 @@
   cursor: pointer;
 }
 
-.subtext {
+.guest-subtext {
   font-size: 14px;
   color: gray;
   margin-left: 10px;
 }
 
-.arrow {
+.guest-arrow {
   margin-left: auto;
   font-size: 20px;
   color: lightgray;
   cursor: pointer;
 }
 
-.info-text {
+.guest-info-text {
   color: #888;
   font-size: 14px;
   margin-top: 30px;
 }
 
-.button-group {
+.guest-button-group {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-top: 40px;
 }
 
-button.cancel,
-button.agree {
+.guest-button-cancel,
+.guest-button-agree {
   padding: 12px 28px;
   font-size: 16px;
   border: none;
   border-radius: 6px;
 }
 
-button.cancel {
+.guest-button-cancel {
   background-color: #eee;
 }
 
-button.agree {
+.guest-button-agree {
   background-color: black;
   color: white;
 }
 
-button.agree:disabled {
+.guest-button-agree:disabled {
   background-color: #ccc;
 }
 
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-box {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 900px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-.modal-close-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #666;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.modal-box h2,
-.modal-box h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.modal-box p {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 16px;
-}
-
-.privacy-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
-}
-
-.privacy-table th,
-.privacy-table td {
-  border: 1px solid #ccc;
-  padding: 14px 16px;
-  font-size: 15px;
-  text-align: center;
-  vertical-align: middle;
-  word-break: keep-all;
-}
-
-.modal-confirm-button {
-  display: block;
-  margin: 0 auto;
-  padding: 12px 28px;
-  font-size: 16px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.modal-backdrop {
+.guest-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -158,9 +80,9 @@ button.agree:disabled {
   z-index: 2000;
 }
 
-.modal-content {
+.guest-modal-content {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 32px 40px;
   width: 860px;
   max-height: 90vh;
@@ -170,30 +92,30 @@ button.agree:disabled {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-.modal-content h2 {
+.guest-modal-content h2 {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 12px;
   text-align: center;
 }
 
-.modal-content h3 {
+.guest-modal-content h3 {
   font-size: 18px;
   font-weight: bold;
   margin: 12px 0;
   text-align: center;
 }
 
-.modal-content p {
+.guest-modal-content p {
   font-size: 15px;
   margin-bottom: 24px;
   text-align: center;
 }
 
-.modal-close {
+.guest-modal-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 16px;
+  right: 16px;
   font-size: 28px;
   background: none;
   border: none;
@@ -201,19 +123,19 @@ button.agree:disabled {
   color: #555;
 }
 
-.modal-close:hover {
+.guest-modal-close:hover {
   color: black;
 }
 
-.agreement-table {
+.guest-agreement-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
   margin-bottom: 32px;
 }
 
-.agreement-table th,
-.agreement-table td {
+.guest-agreement-table th,
+.guest-agreement-table td {
   border: 1px solid #ccc;
   padding: 12px 16px;
   text-align: center;
@@ -221,20 +143,20 @@ button.agree:disabled {
   line-height: 1.6;
 }
 
-.agreement-table th {
+.guest-agreement-table th {
   background-color: #f8f8f8;
   font-weight: bold;
 }
 
-.bold-cell {
+.guest-bold-cell {
   font-weight: bold;
 }
 
-.center-button {
+.guest-center-button {
   text-align: center;
 }
 
-.center-button .agree {
+.guest-center-button .guest-button-agree {
   padding: 12px 32px;
   font-size: 16px;
   background-color: black;
@@ -243,3 +165,4 @@ button.agree:disabled {
   border-radius: 6px;
   cursor: pointer;
 }
+
