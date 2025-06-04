@@ -236,7 +236,7 @@
   margin: 0 auto;
   padding-top: 25px;
   max-width: 400px;
-  padding-bottom: 40px;  /* 전체화면 길이 */
+  padding-bottom: 35px;  /* 전체화면 길이 */
 }
 
 .result-header {
@@ -271,7 +271,7 @@
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
@@ -280,6 +280,9 @@
   justify-content: center;
   gap: 12px;
   margin-top: 20px;  /* 다시 테스트하기 버튼 높이 조정 */
+}
+.result-image {
+  margin-bottom: 5px;
 }
 
 .button {
@@ -305,5 +308,26 @@
 
 .button.secondary:hover {
   background-color: #866a50;
+  transform: scale(1.05);
+}
+
+.share-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.share-button {
+  background-color: #4c3f2f;
+  color: white;
+  font-size: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.share-button:hover {
+  background-color: #3a2f22;
   transform: scale(1.05);
 }

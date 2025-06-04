@@ -5,7 +5,7 @@ const products = [
     price: '1,200원',
     image: '/images/nesquik.png',
     category: '국내제품',
-    description: '달콤한 맛이 매력적인 초콜릿 음료.'
+    description: '달콤한 맛이 매력적인 초콜릿 음료'
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const products = [
     price: '1,200원',
     image: '/images/hershey.png',
     category: '해외제품',
-    description: '진한 허쉬 초콜릿 풍미가 느껴지는 드링크.'
+    description: '진한 허쉬 초콜릿 풍미가 느껴지는 드링크'
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const products = [
     price: '1,600원',
     image: '/images/y.png',
     category: '국내제품',
-    description: '마카다미아와 초콜릿의 고소하고 부드러운 조화.'
+    description: '마카다미아와 초콜릿의 고소하고 부드러운 조화'
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const products = [
     price: '1,650원',
     image: '/images/seoulmilk.jpg',
     category: '국내제품',
-    description: '서울우유의 정통 초콜릿 우유.'
+    description: '서울우유의 정통 초콜릿 우유'
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const products = [
     price: '1,500원',
     image: '/images/kick.png',
     category: '국내제품',
-    description: '바나나킥 맛과 초콜릿 우유의 색다른 만남.'
+    description: '바나나킥 맛과 초콜릿 우유의 색다른 만남'
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const products = [
     price: '1,500원',
     image: '/images/denmark.png',
     category: '국내제품',
-    description: '민트와 초콜릿의 상쾌한 조화를 담은 드링크.'
+    description: '민트와 초콜릿의 상쾌한 조화를 담은 드링크'
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const products = [
     price: '1,600원',
     image: '/images/mong.png',
     category: '국내제품',
-    description: '국민 초코우유로 사랑받는 초코에몽.'
+    description: '국민 초코우유로 사랑받는 초코에몽'
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const products = [
     price: '1,400원',
     image: '/images/bingrae2.png',
     category: '국내제품',
-    description: '왕실 고급 초콜릿의 풍미.'
+    description: '왕실 고급 초콜릿의 풍미'
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const products = [
     price: '1,000원',
     image: '/images/binggrae.png',
     category: '국내제품',
-    description: '당류를 줄인 건강한 초콜릿 우유.'
+    description: '당류를 줄인 건강한 초콜릿 우유'
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const products = [
     price: '1,000원',
     image: '/images/sangha.png',
     category: '국내제품',
-    description: '유기농 우유로 만든 순한 코코아 드링크크.'
+    description: '유기농 우유로 만든 순한 코코아 드링크'
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ const products = [
     price: '35,000원',
     image: '/images/godiba.png',
     category: '해외제품',
-    description: '프리미엄 고디바 초콜릿으로 만든 믹스.'
+    description: '프리미엄 고디바 초콜릿으로 만든 믹스'
   },
   {
     id: 12,
@@ -93,7 +93,7 @@ const products = [
     price: '2,500원',
     image: '/images/cacaolat.png',
     category: '해외제품',
-    description: '스페인의 대표적인 초콜릿 드링크.'
+    description: '스페인의 대표적인 초콜릿 드링크'
   },
   {
     id: 13,
@@ -101,7 +101,7 @@ const products = [
     price: '7,000원',
     image: '/images/promised.png',
     category: '해외제품',
-    description: '진한 다크 초콜릿을 느낄 수 있는 미국산 우유.'
+    description: '진한 다크 초콜릿을 느낄 수 있는 미국산 우유'
   },
   {
     id: 14,
@@ -109,7 +109,7 @@ const products = [
     price: '2,300원',
     image: '/images/&up.png',
     category: '국내제품',
-    description: '집에서 간편하게 즐길 수 있는 카페 스타일 초코라떼.'
+    description: '집에서 간편하게 즐길 수 있는 카페 스타일 초코라떼'
   },
   {
     id: 15,
@@ -117,7 +117,7 @@ const products = [
     price: '20,000원',
     image: '/images/lindt.png',
     category: '해외제품',
-    description: '유럽산 리치한 초콜릿 플레이크로 만든 핫초코.'
+    description: '유럽산 리치한 초콜릿 플레이크로 만든 핫초코'
   },
   {
     id: 16,
@@ -125,7 +125,7 @@ const products = [
     price: '5,000원',
     image: '/images/horizon.png',
     category: '해외제품',
-    description: '미국 유기농 초코우유 브랜드 호라이즌 제품.'
+    description: '미국 유기농 초코우유 브랜드 호라이즌'
   },
   {
     id: 17,
@@ -133,7 +133,7 @@ const products = [
     price: '2,500원',
     image: '/images/chi.png',
     category: '해외제품',
-    description: '일본산 달콤한 밀크 코코아 음료.'
+    description: '일본산 달콤한 밀크 코코아 음료'
   },
   {
     id: 18,
@@ -141,7 +141,7 @@ const products = [
     price: '5,500원',
     image: '/images/swiss.png',
     category: '해외제품',
-    description: '마시멜로가 함께 들어있는 핫초코 믹스.'
+    description: '마시멜로가 함께 들어있는 핫초코 믹스'
   },
   {
     id: 19,
@@ -149,7 +149,7 @@ const products = [
     price: '1,500원',
     image: '/images/seoulnutty.png',
     category: '국내제품',
-    description: '고소한 견과류와 초콜릿의 환상적인 조합.'
+    description: '고소한 견과류와 초콜릿의 환상적인 조합'
   },
   {
     id: 20,
@@ -157,7 +157,7 @@ const products = [
     price: '4,000원',
     image: '/images/mori.png',
     category: '해외제품',
-    description: '일본 모리나가사의 진한 코코아 드링크.'
+    description: '일본 모리나가사의 진한 코코아 드링크'
   },
   {
     id: 21,
@@ -165,7 +165,7 @@ const products = [
     price: '2,000원',
     image: '/images/chun.png',
     category: '국내제품',
-    description: '귀여운 춘식이와 함께 마시는 달콤한 초코우유.'
+    description: '귀여운 춘식이와 함께 마시는 달콤한 초코우유'
   }
 ];
 
