@@ -41,7 +41,7 @@ const products = [
   },
   {
     id: 6,
-    name: '덴마크 민트초코우유 310ml',
+    name: '덴마크 초코코초코우유 310ml',
     price: '1,500원',
     image: '/images/denmark.png',
     category: '국내제품',
