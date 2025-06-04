@@ -418,23 +418,26 @@ const renderInquiryForm = () => {
 
       {showModal && renderModal()}
 
-      {showPostcode && (
-        <div className="modal-backdrop">
-          <div className="modal-box">
-            <DaumPostcode
-              onComplete={(data) => {
-                setZipcode(data.zonecode);
-                setAddress(data.address);
-                setShowPostcode(false);
-              }}
-            />
-           <button className="close-button" onClick={() => setShowModal(false)} aria-label="닫기">
-  ×
-</button>
+{showPostcode && (
+  <div className="modal-backdrop">
+    <div className="modal-box" > {/* ✅ 여백 확보 */}
+      <button
+        className="close-button-postcode"
+        onClick={() => setShowPostcode(false)}
+      >
+        ×
+      </button>
+      <DaumPostcode
+        onComplete={(data) => {
+          setZipcode(data.zonecode);
+          setAddress(data.address);
+          setShowPostcode(false);
+        }}
+      />
+    </div>
+  </div>
+)}
 
-          </div>
-        </div>
-      )}
 
       </div>
     </div>

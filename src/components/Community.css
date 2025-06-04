@@ -220,14 +220,17 @@ form button {
 
 .modal-box {
   background: white;
-  padding: 30px 40px;
+  padding: 20px 20px 20px;  /*  기존 padding에서 top 줄여서 */
+  padding-top: 64px;        /*  X 버튼 높이만큼 확보 */
   border-radius: 12px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 500px;
+  max-width: 95%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
   position: relative;
-  text-align: center;
-  margin-right: 80px;
+  z-index: 1001;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .modal-header {
@@ -432,7 +435,7 @@ form button {
 
 /* 우편번호 찾기 버튼 & 닫기 버튼 동일 스타일 */
 .zip-row button,
-.modal-box button {
+.modal-box button:not(.close-button-postcode){
   padding: 12px 16px;
   background-color: black;
   color: white;
@@ -472,19 +475,56 @@ form button {
   z-index: 1001;
   overflow-y: auto;
   max-height: 90vh;
+  padding-top: 64px;
+}
+/* ✅ 우편번호 모달 배경 */
+.modal-backdrop-postcode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.close-postcode {
-  margin-top: 20px;
-  background-color: #333;
-  color: white;
-  padding: 8px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
+/* ✅ 팝업 박스: 크기를 줄여 이전 스타일로 */
+.modal-box-postcode {
+  position: relative;
+  width: 500px;                /* ✅ 이전처럼 살짝 작게 */
+  max-width: 90%;
+  background-color: #fff;
+  margin: 60px auto;
+  padding: 24px 24px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 2001;
 }
+
+.close-button-postcode {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 28px;
+  background: none !important;
+  border: none !important;
+  color: #333;
+  cursor: pointer;
+  z-index: 2001;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-button-postcode:hover {
+  transform: scale(1.2);
+  color: #222;
+}
+
+
 
 /* Daum 주소 돋보기 겹침 방지 */
 iframe {
