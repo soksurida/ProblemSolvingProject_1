@@ -1,5 +1,8 @@
 body {
   background-color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .payment-page-wrapper {
@@ -8,15 +11,14 @@ body {
 }
 
 .payment-page {
-  max-width: 1100px; /* ✅ 전체 페이지 조금 작게 */
+  max-width: 1200px;
   margin: 0 auto;
-  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .section-title {
-  font-size: 1.4rem;
-  margin-bottom: 30px;
+  font-size: 1.6rem;
   font-weight: bold;
+  margin-bottom: 10px;
   padding-left: 10px;
 }
 
@@ -28,72 +30,210 @@ body {
 
 .payment-left {
   flex: 1;
-  max-width: 720px; /* ✅ 크기 살짝 줄임 */
+  max-width: 660px;
 }
 
 .section-box {
-  border-top: 1px solid #aaa;
-  padding: 20px 0;
+  border-top: 1px solid #ddd;
+  padding: 24px 0;
+  margin-bottom: 24px;
 }
 
-.section-box h3 {
-  font-size: 1.05rem;
+.section-heading {
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 16px;
-}
-
-.form-grid {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-input, select, button {
-  padding: 10px;
-  font-size: 0.9rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.email-group, .phone-group, .address-group {
   display: flex;
-  gap: 6px;
+  align-items: center;
 }
 
 .same-btn {
   margin-left: 10px;
   padding: 4px 10px;
   font-size: 0.75rem;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.divider,
+.divider-small {
+  display: none;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  row-gap: 16px;
+  column-gap: 20px;
+  align-items: center;
+}
+
+label {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+input,
+select,
+button {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.email-group,
+.phone-group,
+.address-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.email-group input,
+.phone-group input,
+.address-group input {
+  flex: 1;
+}
+
+.zipcode-btn {
+  background-color: #f5f5f5;
+  cursor: pointer;
 }
 
 .memo-box {
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
 .memo-box h4 {
   font-size: 0.95rem;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 
 .memo-container {
-  background-color: #f1f1f1; /* ✅ 연한 회색 배경 */
+  background-color: #f1f1f1;
   padding: 16px;
   border-radius: 6px;
 }
 
 .memo-container select {
-  width: 100%; /* ✅ 길게 */
+  width: 100%;
   padding: 10px;
 }
 
+/* ✅ 주문상품 상단 - 총 건수 */
+.product-box-header {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* ✅ 주문상품 정렬 */
+.product-box {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.product-box img {
+  width: 60px;
+  height: 60px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.product-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.product-meta {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #888;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+/* ✅ 결제 수단 5x2 grid */
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.payment-methods button {
+  border: 1px solid #bbb;
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ 토스 로고 */
+.toss-logo {
+  height: 18px;
+  margin-right: 6px;
+}
+
+/* 안내 문구 */
+.notice {
+  font-size: 0.78rem;
+  color: #999;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+.agreement-label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.agreement-detail {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: #555;
+  line-height: 1.5;
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+/* ✅ 우측 요약 박스 고정 */
 .summary-box {
   width: 260px;
   background: #f9f9f9;
   border: 1px solid #aaa;
   padding: 20px;
-  height: fit-content;
   font-size: 0.9rem;
   border-radius: 8px;
-  flex-shrink: 0;
+  position: fixed;
+  top: 120px;
+  right: 40px;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .summary-box p {
@@ -104,7 +244,6 @@ input, select, button {
 
 .summary-box .total {
   font-weight: bold;
-  border-top: 1px solid #888;
   padding-top: 10px;
   margin-top: 10px;
 }
@@ -117,69 +256,6 @@ input, select, button {
   font-weight: bold;
   padding: 12px 0;
   border-radius: 4px;
-}
-
-.product-box {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.product-box img {
-  width: 60px;
-  height: 60px;
-}
-
-.price {
-  font-weight: bold;
-  margin-top: 4px;
-}
-
-.payment-methods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0;
-}
-
-.payment-methods button {
-  border: 1px solid #bbb;
-  background: white;
-  padding: 6px 12px;
-}
-
-.notice {
-  font-size: 0.78rem;
-  color: #999;
-  line-height: 1.4;
-  margin-top: 6px;
-}
-
-
-.agreement label {
-  font-weight: bold;
-}
-
-.agreement ul {
-  margin-top: 10px;
-  font-size: 0.85rem;
-  color: #555;
-}
-
-.agreement-label {
-  font-weight: 500;
-  color: #333;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-.agreement-detail {
-  margin-top: 12px;
-  font-size: 0.78rem;
-  color: #999;
-  line-height: 1.5;
-  padding-left: 18px;
-  list-style-type: disc;
+  cursor: pointer;
+  font-size: 1rem;
 }

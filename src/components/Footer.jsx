@@ -32,13 +32,6 @@ function Footer() {
         <p>고객센터 : 031-670-5161 | 평일 : 09시~18시 | 주말 및 공휴일 휴무</p>
         <p>예금주 : (주)한경 초코 신한은행 482-849155-1599</p>
       </div>
-
-      <div className="footer-icons">
-        <span>📘</span>
-        <span>💼</span>
-        <span>▶️</span>
-        <span>📷</span>
-      </div>
     </footer>
   );
 }
