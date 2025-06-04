@@ -46,7 +46,6 @@ function PaymentPage() {
                   <input type="text" placeholder="보내는 분 입력" />
                   <div className="sender-info-box">
                     · 보내는 분 별도 표기하더라도 고객정보 보호를 위해 마스킹 처리되어 발송됩니다.<br />
-                    예) 오설록 → 오*록 / 오설록몰 → 오설**
                   </div>
                 </div>
               </section>
