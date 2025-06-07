@@ -258,12 +258,14 @@
   font-weight: bold;
   line-height: 1.0;
   margin-top: 0;
+  color: #775036;
 }
 
 .result-description {
   font-size: 16px;
   margin: 5px 0 8px;
   line-height: 1.2;
+  color: #775036;
 }
 
 .result-image {

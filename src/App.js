@@ -11,6 +11,7 @@ import ProductDetail from './components/ProductDetail'; // ✅ 상세페이지 �
 import ProductPage from './components/ProductPage';
 import SignupPage from './components/SignupPage';
 import GuestAgreement from './components/GuestAgreement';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/guest" element={<GuestAgreement />} />
+        <Route path="/search" element={<SearchResults />} />
 
       </Routes>
     </Router>
