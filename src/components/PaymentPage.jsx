@@ -42,11 +42,7 @@ function PaymentPage() {
                     <select><option>010</option></select>
                     <input type="text" placeholder="'-' 없이 휴대폰번호 입력" />
                   </div>
-                  <label>보내는 분</label>
-                  <input type="text" placeholder="보내는 분 입력" />
-                  <div className="sender-info-box">
-                    · 보내는 분 별도 표기하더라도 고객정보 보호를 위해 마스킹 처리되어 발송됩니다.<br />
-                  </div>
+                  
                 </div>
               </section>
 
@@ -112,8 +108,8 @@ function PaymentPage() {
                   ))}
                 </div>
                 <p className="notice">
-                  · 세금계산서는 고객상담실과 상담 후 발급이 가능합니다. (Tel: 080-805-5555)<br />
-                  · 오설록몰에서 주문완료 시, 결제내용 및 배송정보 확인을 위해 회원정보가 함께 등록됩니다.<br />
+                  · 세금계산서는 고객상담실과 상담 후 발급이 가능합니다.<br />
+                  · 주문완료 시, 결제내용 및 배송정보 확인을 위해 회원정보가 함께 등록됩니다.<br />
                   · 현금영수증은 결제일 기준 익일 오전 09시 이후부터 국세청에서 조회할 수 있습니다.
                 </p>
               </section>
@@ -138,7 +134,6 @@ function PaymentPage() {
               <p>배송비 <span>{deliveryFee.toLocaleString()}원</span></p>
               <p className="total">최종 결제 금액 <span>{finalPrice.toLocaleString()}원</span></p>
               <button className="payment-order-btn">결제하기</button>
-              <p className="summary-notice">베이커리·냉동 제품 배송비 유의사항 🛈</p>
             </aside>
           </div>
         </div>

@@ -9,18 +9,16 @@ function GuestAgreement() {
   const [visibleClause, setVisibleClause] = useState(null);
   const [checkedItems, setCheckedItems] = useState({
     terms: false,
-    privacy: false,
-    delegate: false,
-  });
+    privacy: false
+  }); // ✅ delegate 제거
 
   const handleAllCheck = () => {
     const newChecked = !allChecked;
     setAllChecked(newChecked);
     setCheckedItems({
       terms: newChecked,
-      privacy: newChecked,
-      delegate: newChecked,
-    });
+      privacy: newChecked
+    }); // ✅ delegate 제거
   };
 
   const handleCheck = (key) => {
@@ -34,9 +32,8 @@ function GuestAgreement() {
   const handleAgree = () => {
     setCheckedItems({
       terms: true,
-      privacy: true,
-      delegate: true,
-    });
+      privacy: true
+    }); // ✅ delegate 제거
     setAllChecked(true);
     navigate('/payment');
   };
@@ -66,15 +63,9 @@ function GuestAgreement() {
             개인정보 수집동의에 대한 동의
             <span className="guest-arrow" onClick={() => setVisibleClause('privacy')}>➔</span>
           </label>
-
-          <label>
-            <input type="checkbox" checked={checkedItems.delegate} onChange={() => handleCheck('delegate')} />
-            개인정보 처리 위탁에 대한 동의
-            <span className="guest-arrow" onClick={() => setVisibleClause('delegate')}>➔</span>
-          </label>
         </div>
 
-        <p className="guest-info-text">※ 개인정보 처리 위탁에 대한 안내</p>
+        <p className="guest-info-text">※ 개인정보 처리 위탁에 대한 안내는 별도 참조 바랍니다.</p>
 
         <div className="guest-button-group">
           <button className="guest-button-cancel">동의 안함</button>
@@ -87,8 +78,7 @@ function GuestAgreement() {
               <button className="guest-modal-close" onClick={() => setVisibleClause(null)}>
                 &times;
               </button>
-              <h2>비회원 구매 약관 동의</h2>
-              <h3>개인정보 수집 동의</h3>
+              <h2>개인정보 수집 동의</h2>
               <p>
                 주식회사 초코하우스는 다음과 같이 서비스 제공을 위한 최소한의 이용자의 개인정보를 수집 및 이용하고 있습니다.
               </p>
@@ -139,7 +129,7 @@ function GuestAgreement() {
               </button>
               <h2>비회원 구매 이용 약관 동의</h2>
               <h3>제1조 (목적)</h3>
-              <p>이 약관은 초코하우스(이하 \"회사\")가 제공하는 상품 및 서비스의 이용과 관련하여, 비회원의 권리, 의무 및 책임사항을 규정하는 것을 목적으로 합니다.</p>
+              <p>이 약관은 초코하우스(이하 "회사")가 제공하는 상품 및 서비스의 이용과 관련하여, 비회원의 권리, 의무 및 책임사항을 규정하는 것을 목적으로 합니다.</p>
               <h3>제2조 (비회원의 서비스 이용)</h3>
               <ul>
                 <li>1. 비회원은 회사의 온라인 쇼핑몰에서 상품을 주문 및 결제할 수 있습니다.</li>
