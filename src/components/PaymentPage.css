@@ -247,3 +247,36 @@ button {
 .payment-form-grid .full-row input {
   width: 100%;              /* ✅ 동일 폭 */
 }
+
+.payment-methods button {
+  border: 1px solid #bbb;
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border 0.2s;
+}
+
+/* ... 이전 그대로 유지 ... */
+
+.payment-methods button.selected-payment {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.address-group {
+  position: relative;
+}
+
+.daum-postcode {
+  position: absolute;
+  z-index: 2000;
+  background: #fff;
+}
+
+/* 우편번호 팝업 관련 스타일은 위 JSX의 inline style로 처리 */
