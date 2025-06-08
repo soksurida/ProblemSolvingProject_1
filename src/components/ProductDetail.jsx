@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import products from '../data/products';
 
@@ -17,6 +17,13 @@ function ProductDetail() {
 
   const [modalOpen, setModalOpen] = useState(false); // 로그인 모달
   const [showCartModal, setShowCartModal] = useState(false); // 장바구니 확인 모달
+
+
+// 함수 내부 somewhere
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
 
   if (!product) return <p>존재하지 않는 상품입니다.</p>;
 

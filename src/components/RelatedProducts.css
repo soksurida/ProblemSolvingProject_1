@@ -19,15 +19,22 @@
 }
 
 .product-card {
-  flex: 0 0 auto;
+  display: inline-block;     /* 또는 block */
   width: 180px;
-  scroll-snap-align: start;
-  background-color: #fff;
-  border-radius: 8px;
-  text-align: center;
+  cursor: pointer !important;  /* ✅ 커서 강제 지정 */
+  text-decoration: none;
+  color: inherit;
   padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
 }
+
+
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
 
 .related-product-img {
   width: 150px;
