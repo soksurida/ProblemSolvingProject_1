@@ -17,8 +17,13 @@ function PaymentPage() {
   const [isPostOpen, setIsPostOpen] = useState(false);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItems(saved);
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const directBuy = JSON.parse(localStorage.getItem('directBuy'));
+    if (directBuy) {
+      setCartItems([directBuy]);
+    } else {
+      setCartItems(savedCart);
+    }
   }, []);
 
   const getNumericPrice = (price) =>
@@ -46,9 +51,16 @@ function PaymentPage() {
     setIsPostOpen(false);
   };
 
-  const postcodeStyle = {
-    width: '100%', height: '400px', position: 'absolute', zIndex: 2000, background: '#fff',
-  };
+const postcodeStyle = {
+  width: '600px',       // ✅ 너비 확장
+  height: '200px',      // ✅ 세로 축소
+  position: 'absolute',
+  zIndex: 2000,
+  background: '#fff',
+  border: '1px solid #ccc',
+  boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+};
+
 
   return (
     <>
@@ -57,8 +69,8 @@ function PaymentPage() {
         <div className="payment-container">
           <h2 className="payment-title">결제하기</h2>
           <div className="payment-layout">
-
             <div className="payment-left">
+              {/* 주문고객정보 */}
               <section className="payment-section-box">
                 <h3 className="payment-section-heading">주문고객정보</h3>
                 <div className="payment-form-grid">
@@ -68,7 +80,6 @@ function PaymentPage() {
                     value={orderInfo.name}
                     onChange={(e) => setOrderInfo({ ...orderInfo, name: e.target.value })}
                   />
-
                   <label>이메일</label>
                   <div className="email-group">
                     <input
@@ -86,9 +97,17 @@ function PaymentPage() {
                       <option value="gmail.com">gmail.com</option>
                       <option value="daum.net">daum.net</option>
                       <option value="icloud.com">icloud.com</option>
+                      <option value="">직접 입력</option>
                     </select>
+                    {emailDomain === '' && (
+                      <input
+                        type="text"
+                        placeholder="도메인 입력"
+                        value={emailDomain}
+                        onChange={(e) => setEmailDomain(e.target.value)}
+                      />
+                    )}
                   </div>
-
                   <label>휴대전화</label>
                   <div className="phone-group">
                     <select><option>010</option></select>
@@ -102,12 +121,11 @@ function PaymentPage() {
                 </div>
               </section>
 
+              {/* 배송지 정보 */}
               <section className="payment-section-box">
                 <h3 className="payment-section-heading">
                   배송지 정보
-                  <button className="same-btn" onClick={handleCopyOrderInfo}>
-                    주문 고객과 동일
-                  </button>
+                  <button className="same-btn" onClick={handleCopyOrderInfo}>주문 고객과 동일</button>
                 </h3>
                 <div className="payment-form-grid">
                   <label>받는 분</label>
@@ -116,7 +134,6 @@ function PaymentPage() {
                     value={receiverInfo.name}
                     onChange={(e) => setReceiverInfo({ ...receiverInfo, name: e.target.value })}
                   />
-
                   <label>연락처</label>
                   <div className="phone-group">
                     <select><option>010</option></select>
@@ -127,7 +144,6 @@ function PaymentPage() {
                       placeholder="'-' 없이 입력"
                     />
                   </div>
-
                   <label>주소</label>
                   <div className="address-group">
                     <input
@@ -140,7 +156,6 @@ function PaymentPage() {
                       우편번호 찾기
                     </button>
                   </div>
-
                   <label>상세주소</label>
                   <input
                     type="text"
@@ -152,35 +167,37 @@ function PaymentPage() {
                 {isPostOpen && (
                   <DaumPostcode style={postcodeStyle} onComplete={handleAddressComplete} />
                 )}
-
-                <div className="memo-box">
-                  <h4>배송 요청사항</h4>
-                  <div className="memo-container">
-                    <select
-                      value={requestOption}
-                      onChange={(e) => setRequestOption(e.target.value)}
-                    >
-                      <option>배송 요청사항 선택</option>
-                      <option>부재 시 문 앞에 놓아주세요</option>
-                      <option>경비실에 맡겨주세요</option>
-                      <option>직접 수령하겠습니다</option>
-                      <option>배송 전 연락 부탁드립니다</option>
-                      <option>택배함에 넣어주세요</option>
-                      <option>직접 입력</option>
-                    </select>
-                    {requestOption === '직접 입력' && (
-                      <input
-                        type="text"
-                        placeholder="요청사항 입력"
-                        value={customRequest}
-                        onChange={(e) => setCustomRequest(e.target.value)}
-                        style={{ marginTop: '10px', width: '100%' }}
-                      />
-                    )}
-                  </div>
-                </div>
               </section>
 
+              {/* 배송 요청사항 */}
+              <div className="memo-box">
+                <h4>배송 요청사항</h4>
+                <div className="memo-container">
+                  <select
+                    value={requestOption}
+                    onChange={(e) => setRequestOption(e.target.value)}
+                  >
+                    <option>배송 요청사항 선택</option>
+                    <option>부재 시 문 앞에 놓아주세요</option>
+                    <option>경비실에 맡겨주세요</option>
+                    <option>직접 수령하겠습니다</option>
+                    <option>배송 전 연락 부탁드립니다</option>
+                    <option>택배함에 넣어주세요</option>
+                    <option>직접 입력</option>
+                  </select>
+                  {requestOption === '직접 입력' && (
+                    <input
+                      type="text"
+                      placeholder="요청사항 입력"
+                      value={customRequest}
+                      onChange={(e) => setCustomRequest(e.target.value)}
+                      style={{ marginTop: '10px', width: '100%' }}
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* 주문상품 */}
               <section className="payment-section-box">
                 <div className="payment-section-heading">
                   <h3>주문상품</h3>
@@ -206,20 +223,13 @@ function PaymentPage() {
                 })}
               </section>
 
+              {/* 결제 수단 */}
               <section className="payment-section-box">
                 <h3 className="payment-section-heading">결제 수단 선택</h3>
                 <div className="payment-methods">
                   {[
-                    '토스페이',
-                    '신용카드',
-                    '네이버페이',
-                    '카카오페이',
-                    'PAYCO',
-                    'Samsung pay',
-                    'L.Pay',
-                    '무통장 입금',
-                    '계좌이체',
-                    '휴대폰결제',
+                    '토스페이', '신용카드', '네이버페이', '카카오페이', 'PAYCO',
+                    'Samsung pay', 'L.Pay', '무통장 입금', '계좌이체', '휴대폰결제',
                   ].map((method) => (
                     <button
                       key={method}
@@ -231,25 +241,18 @@ function PaymentPage() {
                   ))}
                 </div>
                 <p className="notice">
-                  · 세금계산서는 고객상담실과 상담 후 발급 가능합니다.
-                  <br />
-                  · 주문 완료 시 회원정보 등록과 함께 결제정보 저장됩니다.
-                  <br />
+                  · 세금계산서는 고객상담실과 상담 후 발급 가능합니다.<br />
+                  · 주문 완료 시 회원정보 등록과 함께 결제정보 저장됩니다.<br />
                   · 현금영수증은 결제일 익일 오전 9시부터 국세청 조회 가능합니다.
                 </p>
               </section>
             </div>
 
+            {/* 우측 요약 */}
             <aside className="payment-summary-box">
-              <p>
-                총 상품 금액 <span>{totalPrice.toLocaleString()}원</span>
-              </p>
-              <p>
-                배송비 <span>{deliveryFee.toLocaleString()}원</span>
-              </p>
-              <p className="total">
-                최종 결제 금액 <span>{finalPrice.toLocaleString()}원</span>
-              </p>
+              <p>총 상품 금액 <span>{totalPrice.toLocaleString()}원</span></p>
+              <p>배송비 <span>{deliveryFee.toLocaleString()}원</span></p>
+              <p className="total">최종 결제 금액 <span>{finalPrice.toLocaleString()}원</span></p>
               <button className="payment-order-btn">결제하기</button>
             </aside>
           </div>
