@@ -15,8 +15,8 @@ function ProductDetail() {
   const product = products.find(p => p.id === Number(id));
   const [quantity, setQuantity] = useState(1);
 
-  const [modalOpen, setModalOpen] = useState(false); // 로그인 모달
-  const [showCartModal, setShowCartModal] = useState(false); // 장바구니 확인 모달
+  const [modalOpen, setModalOpen] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,9 +49,22 @@ function ProductDetail() {
     }
 
     localStorage.setItem('cart', JSON.stringify(existingCart));
-
-    // ✅ 장바구니 안내 모달 띄우기
     setShowCartModal(true);
+  };
+
+  // ✅ 비회원 구매 시 처리
+  const handleGuestBuy = () => {
+    const item = {
+      id: product.id,
+      name: product.name,
+      price: priceNumber,
+      image: product.image,
+      quantity: quantity,
+      desc: product.description || '기분이 좋아지는 초코우유!',
+    };
+    localStorage.setItem('directBuy', JSON.stringify(item));
+    setModalOpen(false);
+    navigate('/guest-agreement'); // 실제 비회원 약관 경로로 바꿔도 됨
   };
 
   return (
@@ -84,7 +97,6 @@ function ProductDetail() {
               <button className="detail-buy-now" onClick={() => setModalOpen(true)}>
                 바로 구매하기
               </button>
-
               <button className="detail-add-cart" onClick={addToCart}>
                 장바구니 담기
               </button>
@@ -93,13 +105,13 @@ function ProductDetail() {
         </div>
       </section>
 
-      {/* 모달 연결 */}
-      {modalOpen && <LoginModal onClose={() => setModalOpen(false)} />}
+      {/* ✅ 로그인 모달: 비회원 구매 함수 전달 */}
+      {modalOpen && <LoginModal onClose={() => setModalOpen(false)} onGuestBuy={handleGuestBuy} />}
+
       {showCartModal && <CartConfirmModal onClose={() => setShowCartModal(false)} />}
 
-      {/* ✅ 하단 상세 정보와 관련 상품을 감싸고, 상품 상세를 오른쪽으로 이동 */}
       <div className="product-lower-section">
-        <div className="product-info-wrapper"> {/* ✅ 오른쪽 여백 적용용 wrapper */}
+        <div className="product-info-wrapper">
           <ProductInfo />
         </div>
         <RelatedProducts

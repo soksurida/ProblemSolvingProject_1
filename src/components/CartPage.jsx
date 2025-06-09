@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './CartPage.css';
 import Header from './Header';
 import LoginModal from './LoginModal';
-import { useNavigate } from 'react-router-dom'; // ✅ 상세페이지 이동용 import 추가
+import { useNavigate } from 'react-router-dom';
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate(); // ✅ navigate 훅 사용
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -67,6 +67,19 @@ function CartPage() {
     localStorage.setItem('cart', JSON.stringify(updated));
   };
 
+  const handleGuestBuy = () => {
+    const itemsToBuy = selectedItems.length > 0
+      ? cartItems.filter(item => selectedItems.includes(item.id))
+      : cartItems;
+
+    if (itemsToBuy.length === 0) return alert('주문할 상품이 없습니다.');
+
+    localStorage.setItem('cart', JSON.stringify(itemsToBuy));
+    localStorage.removeItem('directBuy');
+    setShowModal(false);
+    navigate('/guest-agreement');
+  };
+
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const deliveryFee = totalPrice >= 20000 ? 0 : 2500;
   const finalPrice = totalPrice + deliveryFee;
@@ -100,7 +113,6 @@ function CartPage() {
                   checked={selectedItems.includes(item.id)}
                   onChange={() => handleItemSelect(item.id)}
                 />
-                {/* ✅ 클릭 시 상세페이지로 이동 */}
                 <img
                   src={item.image}
                   alt={item.name}
@@ -112,7 +124,7 @@ function CartPage() {
                 <div className="item-info">
                   <div
                     className="item-name"
-                    onClick={() => navigate(`/product/${item.id}`)} // ✅ 이름 클릭해도 이동
+                    onClick={() => navigate(`/product/${item.id}`)}
                     style={{ cursor: 'pointer' }}
                   >
                     {item.name}
@@ -165,7 +177,7 @@ function CartPage() {
         </div>
       </div>
 
-      {showModal && <LoginModal onClose={() => setShowModal(false)} />}
+      {showModal && <LoginModal onClose={() => setShowModal(false)} onGuestBuy={handleGuestBuy} />}
     </div>
   );
 }

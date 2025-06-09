@@ -27,7 +27,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} /> {/* ✅ 상세페이지 라우팅 추가 */}
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/guest" element={<GuestAgreement />} />
+        <Route path="/guest-agreement" element={<GuestAgreement />} />
         <Route path="/search" element={<SearchResults />} />
 
       </Routes>

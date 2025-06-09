@@ -4,7 +4,7 @@ const products = [
     name: '네스퀵 초콜릿 드링크 180ml',
     price: '1,200원',
     image: '/images/nesquik.png',
-    explain: '/images/explain/nesquik_e.png',
+    explain: '/images/explain/nesquik_e.jpg',
     category: '국내제품',
     description: '달콤한 맛이 매력적인 초콜릿 음료'
   },
@@ -48,7 +48,7 @@ const products = [
     id: 6,
     name: '덴마크 민트초코우유 310ml',
     price: '1,500원',
-    image: '/images/denmark.png',
+    image: '/images/denmark.jpg',
     explain: '/images/explain/denmark_e.jpg',
     category: '국내제품',
     description: '민트와 초콜릿의 상쾌한 조화를 담은 드링크'
@@ -57,8 +57,8 @@ const products = [
     id: 7,
     name: '남양유업 초코에몽 190ml',
     price: '1,600원',
-    image: '/images/mong.png',
-    explain: '/images/explain/chocoemon_e.jap',
+    image: '/images/chocomong.png',
+    explain: '/images/explain/chocoemon_e.jpg',
     category: '국내제품',
     description: '국민 초코우유로 사랑받는 초코에몽'
   },
@@ -121,7 +121,7 @@ const products = [
     name: '일동후디스 앤업카페 초코라떼텀블러 300ml',
     price: '2,300원',
     image: '/images/&up.png',
-    explain: '/images/explain/ildong,jpg',
+    explain: '/images/explain/ildong.jpg',
     category: '국내제품',
     description: '집에서 간편하게 즐길 수 있는 카페 스타일 초코라떼'
   },
@@ -184,7 +184,7 @@ const products = [
     name: '춘식이 초코우유 500ml',
     price: '2,000원',
     image: '/images/chun.png',
-    explain: '/images/explain/chunsik.e_jpg',
+    explain: '/images/explain/chunsik_e.jpg',
     category: '국내제품',
     description: '귀여운 춘식이와 함께 마시는 달콤한 초코우유'
   }
