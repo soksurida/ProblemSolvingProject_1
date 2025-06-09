@@ -1,3 +1,4 @@
+// 상단 import는 그대로 유지
 import React, { useState, useEffect } from 'react';
 import './PaymentPage.css';
 import Header from './Header';
@@ -50,16 +51,6 @@ function PaymentPage() {
     let full = data.address;
     setReceiverInfo((prev) => ({ ...prev, address: `[${data.zonecode}] ${full}` }));
     setIsPostOpen(false);
-  };
-
-  const postcodeStyle = {
-    width: '600px',
-    height: '200px',
-    position: 'absolute',
-    zIndex: 2000,
-    background: '#fff',
-    border: '1px solid #ccc',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
   };
 
   const getFullEmail = () => {
@@ -169,9 +160,6 @@ function PaymentPage() {
                     placeholder="상세주소 입력"
                   />
                 </div>
-                {isPostOpen && (
-                  <DaumPostcode style={postcodeStyle} onComplete={handleAddressComplete} />
-                )}
               </section>
 
               {/* 배송 요청사항 */}
@@ -263,6 +251,22 @@ function PaymentPage() {
           </div>
         </div>
       </div>
+
+      {/* ✅ DaumPostcode 팝업 */}
+      {isPostOpen && (
+        <div className="modal-backdrop">
+          <div className="modal-box">
+            <button
+              className="close-button-postcode"
+              onClick={() => setIsPostOpen(false)}
+            >
+              ×
+            </button>
+            <DaumPostcode onComplete={handleAddressComplete} />
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );
