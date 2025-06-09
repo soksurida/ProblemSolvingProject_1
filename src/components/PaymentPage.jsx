@@ -9,6 +9,7 @@ function PaymentPage() {
   const [cartItems, setCartItems] = useState([]);
   const [emailId, setEmailId] = useState('');
   const [emailDomain, setEmailDomain] = useState('naver.com');
+  const [customDomain, setCustomDomain] = useState('');
   const [customRequest, setCustomRequest] = useState('');
   const [requestOption, setRequestOption] = useState('');
   const [selectedPayment, setSelectedPayment] = useState('');
@@ -51,16 +52,19 @@ function PaymentPage() {
     setIsPostOpen(false);
   };
 
-const postcodeStyle = {
-  width: '600px',       // ✅ 너비 확장
-  height: '200px',      // ✅ 세로 축소
-  position: 'absolute',
-  zIndex: 2000,
-  background: '#fff',
-  border: '1px solid #ccc',
-  boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-};
+  const postcodeStyle = {
+    width: '600px',
+    height: '200px',
+    position: 'absolute',
+    zIndex: 2000,
+    background: '#fff',
+    border: '1px solid #ccc',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+  };
 
+  const getFullEmail = () => {
+    return `${emailId}@${emailDomain === 'custom' ? customDomain : emailDomain}`;
+  };
 
   return (
     <>
@@ -89,22 +93,23 @@ const postcodeStyle = {
                       onChange={(e) => setEmailId(e.target.value)}
                     />
                     <span>@</span>
-                    <select
-                      value={emailDomain}
-                      onChange={(e) => setEmailDomain(e.target.value)}
-                    >
-                      <option value="naver.com">naver.com</option>
-                      <option value="gmail.com">gmail.com</option>
-                      <option value="daum.net">daum.net</option>
-                      <option value="icloud.com">icloud.com</option>
-                      <option value="">직접 입력</option>
-                    </select>
-                    {emailDomain === '' && (
-                      <input
-                        type="text"
-                        placeholder="도메인 입력"
+                    {emailDomain !== 'custom' ? (
+                      <select
                         value={emailDomain}
                         onChange={(e) => setEmailDomain(e.target.value)}
+                      >
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="daum.net">daum.net</option>
+                        <option value="icloud.com">icloud.com</option>
+                        <option value="custom">직접 입력</option>
+                      </select>
+                    ) : (
+                      <input
+                        type="text"
+                        value={customDomain}
+                        placeholder="도메인 입력"
+                        onChange={(e) => setCustomDomain(e.target.value)}
                       />
                     )}
                   </div>
@@ -248,7 +253,7 @@ const postcodeStyle = {
               </section>
             </div>
 
-            {/* 우측 요약 */}
+            {/* 결제 요약 */}
             <aside className="payment-summary-box">
               <p>총 상품 금액 <span>{totalPrice.toLocaleString()}원</span></p>
               <p>배송비 <span>{deliveryFee.toLocaleString()}원</span></p>
