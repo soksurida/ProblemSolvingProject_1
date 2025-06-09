@@ -4,6 +4,9 @@
   margin: 0 auto;
   padding: 40px 20px;
   overflow-x: hidden;
+
+  /* ✅ 고정된 헤더와의 간격을 벌리기 위해 margin-top 추가 */
+  margin-top: 47px; /* 필요에 따라 80px ~ 120px 조절 가능 */
 }
 
 .breadcrumb {
@@ -15,7 +18,7 @@
 
 .product-content {
   display: flex;
-  gap: 40px;
+  gap: 120px;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
@@ -157,4 +160,14 @@
 
 .product-card:hover {
   transform: scale(1.05); /* ✅ 호버 확대 효과 */
+}
+
+/* 하단 상세 정보 및 관련상품 영역 간 간격 조절 */
+.product-lower-section {
+  margin-top: 150px; /* ✅ 80px 아래로 내림 (원하는 값으로 조절 가능) */
+}
+
+/* 상품 상세 정보 글씨 우측으로 이동 */
+.product-info-wrapper {
+  margin-left: 60px; /* ✅ 오른쪽으로 이동시킬 여백 (값 조절 가능) */
 }

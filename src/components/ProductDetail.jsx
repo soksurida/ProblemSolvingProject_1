@@ -18,12 +18,9 @@ function ProductDetail() {
   const [modalOpen, setModalOpen] = useState(false); // 로그인 모달
   const [showCartModal, setShowCartModal] = useState(false); // 장바구니 확인 모달
 
-
-// 함수 내부 somewhere
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
-
 
   if (!product) return <p>존재하지 않는 상품입니다.</p>;
 
@@ -100,12 +97,16 @@ function ProductDetail() {
       {modalOpen && <LoginModal onClose={() => setModalOpen(false)} />}
       {showCartModal && <CartConfirmModal onClose={() => setShowCartModal(false)} />}
 
-      {/* 하단 연결 */}
-      <ProductInfo />
-      <RelatedProducts
-        currentProductId={product.id}
-        currentCategory={product.category}
-      />
+      {/* ✅ 하단 상세 정보와 관련 상품을 감싸고, 상품 상세를 오른쪽으로 이동 */}
+      <div className="product-lower-section">
+        <div className="product-info-wrapper"> {/* ✅ 오른쪽 여백 적용용 wrapper */}
+          <ProductInfo />
+        </div>
+        <RelatedProducts
+          currentProductId={product.id}
+          currentCategory={product.category}
+        />
+      </div>
     </>
   );
 }
