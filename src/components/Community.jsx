@@ -4,6 +4,7 @@ import Header from './Header';
 import './Community.css';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import DaumPostcode from 'react-daum-postcode';
+import Footer from './Footer'
 
 function Community() {
   const [inquiries, setInquiries] = useState([]);
@@ -440,6 +441,7 @@ const renderInquiryForm = () => {
 
 
       </div>
+      <Footer />
     </div>
   );
 }

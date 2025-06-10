@@ -3,6 +3,7 @@ import './CartPage.css';
 import Header from './Header';
 import LoginModal from './LoginModal';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer'
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -176,6 +177,7 @@ function CartPage() {
           </button>
         </div>
       </div>
+      <Footer />
 
       {showModal && <LoginModal onClose={() => setShowModal(false)} onGuestBuy={handleGuestBuy} />}
     </div>

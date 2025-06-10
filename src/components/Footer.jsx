@@ -4,10 +4,6 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-      <div className="inquiry-box">
-        <h3>고객 문의</h3>
-        <button className="inquiry-btn">바로가기</button>
-      </div>
 
       <div className="footer-links">
         <a href="#">회사소개</a>

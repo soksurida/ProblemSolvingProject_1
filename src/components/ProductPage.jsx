@@ -3,6 +3,7 @@ import './ProductPage.css';
 import Header from './Header';
 import { FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // ✅ 링크 기능 추가
+import Footer from './Footer'
 
 const products = [
   { id: 1, name: '네스퀵 초콜릿 드링크 180ml', price: '1,200원', image: '/images/nesquik.png', category: '국내제품' },
@@ -120,7 +121,9 @@ const ProductPage = () => {
           </div>
         </section>
       </div>
+      <Footer />
     </div>
+    
   );
 };
 

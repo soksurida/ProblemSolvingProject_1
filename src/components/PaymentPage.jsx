@@ -4,6 +4,7 @@ import Header from './Header';
 
 import DaumPostcode from 'react-daum-postcode';
 import products from '../data/products';
+import Footer from './Footer'
 
 function PaymentPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -185,6 +186,7 @@ function PaymentPage() {
           </div>
         </div>
       </div>
+      <Footer />
 
       {/* 우편번호 검색 */}
       {isPostOpen && (
@@ -192,6 +194,7 @@ function PaymentPage() {
           <div className="modal-box">
             <button className="close-button-postcode" onClick={() => setIsPostOpen(false)}>×</button>
             <DaumPostcode onComplete={handleAddressComplete} />
+          
           </div>
         </div>
       )}

@@ -8,6 +8,7 @@ import CartConfirmModal from './CartConfirmModal';
 import RelatedProducts from './RelatedProducts';
 import ProductInfo from './ProductInfo';
 import './ProductDetail.css';
+import Footer from './Footer'
 
 function ProductDetail() {
   const { id } = useParams();
@@ -119,6 +120,7 @@ function ProductDetail() {
           currentCategory={product.category}
         />
       </div>
+      <Footer />
     </>
   );
 }
