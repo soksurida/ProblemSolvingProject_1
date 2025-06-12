@@ -5,6 +5,8 @@ import Header from './Header';
 import DaumPostcode from 'react-daum-postcode';
 import products from '../data/products';
 import Footer from './Footer'
+import { useNavigate } from 'react-router-dom'; // 이 줄 추가!
+
 
 function PaymentPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -17,6 +19,8 @@ function PaymentPage() {
   const [orderInfo, setOrderInfo] = useState({ name: '', phone: '' });
   const [receiverInfo, setReceiverInfo] = useState({ name: '', phone: '', address: '', detail: '' });
   const [isPostOpen, setIsPostOpen] = useState(false);
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅 선언
+
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -54,6 +58,16 @@ function PaymentPage() {
     setReceiverInfo((prev) => ({ ...prev, address: `[${data.zonecode}] ${full}` }));
     setIsPostOpen(false);
   };
+
+  const validateForm = () => {
+  const isOrderValid = orderInfo.name && orderInfo.phone;
+  const isReceiverValid = receiverInfo.name && receiverInfo.phone && receiverInfo.address && receiverInfo.detail;
+  const isEmailValid = emailId && (emailDomain !== 'custom' ? emailDomain : customDomain);
+  const isPaymentSelected = selectedPayment !== '';
+
+  return isOrderValid && isReceiverValid && isEmailValid && isPaymentSelected;
+};
+
 
   const getFullEmail = () => {
     return `${emailId}@${emailDomain === 'custom' ? customDomain : emailDomain}`;
@@ -181,7 +195,21 @@ function PaymentPage() {
               <p>총 상품 금액 <span>{totalPrice.toLocaleString()}원</span></p>
               <p>배송비 <span>{deliveryFee.toLocaleString()}원</span></p>
               <p className="total">최종 결제 금액 <span>{finalPrice.toLocaleString()}원</span></p>
-              <button className="payment-order-btn" onClick={() => localStorage.removeItem('directBuy')}>결제하기</button>
+              <button
+                className="payment-order-btn"
+                onClick={() => {
+                  if (!validateForm()) {
+                  alert("정보를 모두 입력해주세요.");
+                  return;
+                  }
+
+                  localStorage.removeItem('directBuy');
+                  navigate('/payment-complete'); // ✅ 결제 완료 페이지로 이동
+                }}
+              >
+                결제하기
+              </button>
+
             </aside>
           </div>
         </div>

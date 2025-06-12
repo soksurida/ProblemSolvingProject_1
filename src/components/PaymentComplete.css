@@ -1,0 +1,25 @@
+.payment-complete-container {
+  text-align: center;
+  padding: 100px 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.payment-complete-container h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.payment-complete-container p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.home-btn {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+}

@@ -12,6 +12,7 @@ import ProductPage from './components/ProductPage';
 import SignupPage from './components/SignupPage';
 import GuestAgreement from './components/GuestAgreement';
 import SearchResults from './components/SearchResults';
+import PaymentComplete from './components/PaymentComplete';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/guest-agreement" element={<GuestAgreement />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path="/payment-complete" element={<PaymentComplete />} /> 
 
       </Routes>
     </Router>
