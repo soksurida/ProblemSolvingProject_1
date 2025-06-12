@@ -75,27 +75,24 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
+  justify-content: center; /* 가로 중앙 */
+  align-items: center;     /* 세로 중앙 */
+  z-index: 3000;
 }
 
+
 .guest-modal-content {
-  background-color: #fff;
+  background-color: white;
   border-radius: 12px;
-  padding: 32px 40px;
   width: 860px;
   max-height: 90vh;
   overflow-y: auto;
-  overflow-x: hidden;
+  padding: 36px 40px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   position: relative;
+  line-height: 1.8;
   font-family: 'Noto Sans KR', sans-serif;
-
-  /* 👇 이거 추가 */
-  scrollbar-gutter: stable;
 }
-
 
 .guest-modal-content h2 {
   font-size: 22px;
@@ -181,4 +178,17 @@
 
 .guest-modal-content::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.guest-modal-content ul {
+  list-style-position: inside;  /* 불릿을 텍스트와 같이 안쪽으로 */
+  padding-left: 0;
+  text-align: center;           /* 텍스트를 가운데 정렬 */
+  margin-left: 0;
+}
+
+.guest-modal-content li {
+  text-align: center;           /* 리스트 항목 텍스트도 가운데 */
+  margin-bottom: 8px;
+  list-style-type: disc;
 }

@@ -218,10 +218,10 @@ form button {
   align-items: center;
 }
 
-.modal-box {
+.modal-box.phone-check-box {
   background: white;
   padding: 20px 20px 20px;  /*  기존 padding에서 top 줄여서 */
-  padding-top: 64px;        /*  X 버튼 높이만큼 확보 */
+  padding-top: 32px;        /*  X 버튼 높이만큼 확보 */
   border-radius: 12px;
   width: 500px;
   max-width: 95%;
@@ -294,6 +294,15 @@ form button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+
+  display: block;
+  margin: 20px auto 0 auto; /* ✅ 위는 20px, 좌우 auto = 중앙 정렬 */
+}
+
+.phone-instruction {
+  text-align: center;
+  font-size: 16px;
+  margin: 16px 0;
 }
 
 .same-font {
@@ -497,8 +506,9 @@ form button {
   width: 500px;                /* ✅ 이전처럼 살짝 작게 */
   max-width: 90%;
   background-color: #fff;
-  margin: 60px auto;
-  padding: 24px 24px 16px;
+  margin: 20px auto;
+  padding: 12px 20px 16px;
+  padding-top: 12px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   overflow: hidden;
@@ -507,22 +517,23 @@ form button {
 
 .close-button-postcode {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 28px;
-  background: none !important;
-  border: none !important;
-  color: #333;
+  top: 12px;                  /* ✅ 위쪽 공백 약간 줄이기 */
+  right: 12px;
+  font-size: 28px;            /* ✅ 더 크게 */
+  font-weight: 400;          /* ✅ 더 굵게 */
+  color: #666;                /* ✅ 더 진한 회색 */
+  background: none;
+  border: none;
   cursor: pointer;
   z-index: 2001;
-  padding: 0;
   line-height: 1;
 }
 
 .close-button-postcode:hover {
-  transform: scale(1.2);
-  color: #222;
+  color: #333;
+  transform: scale(1.1);
 }
+
 
 
 

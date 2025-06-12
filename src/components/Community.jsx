@@ -62,55 +62,57 @@ Choco House의 새벽배송 가능 지역이 경기 남부 및 인천 전역까�
     }
   ];
 
-const renderMyPage = () => (
-  <div className="mypage-section">
-    <h2 className="mypage-title">나의 상담내역</h2>
-    <p className="mypage-count">
-      총 <span className="mypage-count-red">{inquiries.filter(item => item.phone === `${phone1}-${phone2}-${phone3}`).length}</span>개의 게시물이 있습니다
+const renderMyPage = () => {
+  const myInquiries = inquiries.filter(
+    item => item.phone.replace(/-/g, '') === phone1 + phone2 + phone3
+  );
 
-    </p>
-    <table className="mypage-table">
-      <thead>
-        <tr>
-          <th className="no">NO</th>
-          <th className="category">상담 카테고리</th>
-          <th className="title">제목</th>
-          <th className="date">등록일</th>
-          <th className="status">답변 등록</th>
-        </tr>
-      </thead>
-      <tbody>
-        {inquiries.length > 0 ? (
-          inquiries
-            .filter((item) => item.phone === `${phone1}-${phone2}-${phone3}`)
-            .map((item, index) => (
+  return (
+    <div className="mypage-section">
+      <h2 className="mypage-title">나의 상담내역</h2>
+      <p className="mypage-count">
+        총 <span className="mypage-count-red">{myInquiries.length}</span>개의 게시물이 있습니다
+      </p>
+      <table className="mypage-table">
+        <thead>
+          <tr>
+            <th className="no">NO</th>
+            <th className="category">상담 카테고리</th>
+            <th className="title">제목</th>
+            <th className="date">등록일</th>
+            <th className="status">답변 등록</th>
+          </tr>
+        </thead>
+        <tbody>
+          {myInquiries.length > 0 ? (
+            myInquiries.map((item, index) => (
               <tr key={index}>
                 <td>{item.no}</td>
                 <td>{`${item.category} - ${item.subcategory}`}</td>
                 <td>{item.title}</td>
                 <td>{item.date}</td>
                 <td>
-  {item.answered ? (
-    '답변완료'
-  ) : (
-    <span className="status-waiting">대기중</span>
-  )}
-</td>
-
+                  {item.answered ? (
+                    '답변완료'
+                  ) : (
+                    <span className="status-waiting">대기중</span>
+                  )}
+                </td>
               </tr>
             ))
-        ) : (
-          <tr>
-            <td colSpan="5" className="mypage-empty">
-              등록된 상담 내역이 없습니다.
-            </td>
-          </tr>
-        )}
-      </tbody>
+          ) : (
+            <tr>
+              <td colSpan="5" className="mypage-empty">
+                등록된 상담 내역이 없습니다.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-    </table>
-  </div>
-);
 
   const renderNotices = () => (
     <div className="accordion">
@@ -167,7 +169,7 @@ const renderInquiryForm = () => {
 
     const form = e.target;
     const name = form[0].value;
-    const phone = form[1].value;
+    const phone = `${phone1}-${phone2}-${phone3}`;
     const category = form[6].value;
     const subcategory = form[7].value;
     const title = form[8].value;
@@ -313,13 +315,13 @@ const renderInquiryForm = () => {
 
   const renderModal = () => (
     <div className="modal-backdrop">
-      <div className="modal-box">
+      <div className="modal-box phone-check-box">
         <div className="modal-header">
         <h3 className="modal-title">나의 문의 내역 확인</h3>
         <div className="x-area" onClick={() => setShowModal(false)}>×</div>
       </div>
 
-        <p>문의하신 연락처를 입력하시기 바랍니다.</p>
+        <p className="phone-instruction"> 문의하신 연락처를 입력하시기 바랍니다.</p>
 
         <div className="phone-inputs">
   <input
@@ -398,13 +400,23 @@ const renderInquiryForm = () => {
               key={tab}
               className={`tab ${activeTab === tab ? 'active' : ''}`}
               onClick={() => {
-                if (tab === '나의 문의내역') {
-                  setShowModal(true);
-                } else {
-                  setActiveTab(tab);
-                  setOpenIndex(null);
-                }
-              }}
+  if (tab === '나의 문의내역') {
+    setShowModal(false);
+
+    setPhone1('');
+    setPhone2('');
+    setPhone3('');
+    setError('');
+
+    setTimeout(() => {
+      setShowModal(true);
+    }, 50);
+  } else {
+    setActiveTab(tab);
+    setOpenIndex(null);
+  }
+}}
+
             >
               {tab}
             </span>

@@ -10,7 +10,7 @@ function GuestAgreement() {
   const [checkedItems, setCheckedItems] = useState({
     terms: false,
     privacy: false
-  }); // ✅ delegate 제거
+  });
 
   const handleAllCheck = () => {
     const newChecked = !allChecked;
@@ -18,7 +18,7 @@ function GuestAgreement() {
     setCheckedItems({
       terms: newChecked,
       privacy: newChecked
-    }); // ✅ delegate 제거
+    });
   };
 
   const handleCheck = (key) => {
@@ -33,7 +33,7 @@ function GuestAgreement() {
     setCheckedItems({
       terms: true,
       privacy: true
-    }); // ✅ delegate 제거
+    });
     setAllChecked(true);
     navigate('/payment');
   };
@@ -72,16 +72,13 @@ function GuestAgreement() {
           <button className="guest-button-agree" disabled={!allAgreed} onClick={handleAgree}>동의함</button>
         </div>
 
+        {/* 개인정보 수집 동의 모달 */}
         {visibleClause === 'privacy' && (
           <div className="guest-modal-backdrop">
             <div className="guest-modal-content">
-              <button className="guest-modal-close" onClick={() => setVisibleClause(null)}>
-                &times;
-              </button>
+              <button className="guest-modal-close" onClick={() => setVisibleClause(null)}>&times;</button>
               <h2>개인정보 수집 동의</h2>
-              <p>
-                주식회사 초코하우스는 다음과 같이 서비스 제공을 위한 최소한의 이용자의 개인정보를 수집 및 이용하고 있습니다.
-              </p>
+              <p>주식회사 초코하우스는 다음과 같이 서비스 제공을 위한 최소한의 이용자의 개인정보를 수집 및 이용하고 있습니다.</p>
               <table className="guest-agreement-table">
                 <thead>
                   <tr>
@@ -121,38 +118,45 @@ function GuestAgreement() {
           </div>
         )}
 
+        {/* 비회원 구매 약관 동의 모달 */}
         {visibleClause === 'terms' && (
           <div className="guest-modal-backdrop">
             <div className="guest-modal-content">
-              <button className="guest-modal-close" onClick={() => setVisibleClause(null)}>
-                &times;
-              </button>
+              <button className="guest-modal-close" onClick={() => setVisibleClause(null)}>&times;</button>
               <h2>비회원 구매 이용 약관 동의</h2>
+
               <h3>제1조 (목적)</h3>
               <p>이 약관은 초코하우스(이하 "회사")가 제공하는 상품 및 서비스의 이용과 관련하여, 비회원의 권리, 의무 및 책임사항을 규정하는 것을 목적으로 합니다.</p>
+
               <h3>제2조 (비회원의 서비스 이용)</h3>
               <ul>
-                <li>1. 비회원은 회사의 온라인 쇼핑몰에서 상품을 주문 및 결제할 수 있습니다.</li>
-                <li>2. 비회원은 상품 배송, 결제 처리, 고객 응대 등을 위한 최소한의 개인정보(이름, 연락처, 주소 등)를 제공해야 합니다.</li>
-                <li>3. 비회원은 회원 전용 혜택(포인트 적립, 이벤트 참여 등)은 제공되지 않으며, 일부 서비스 제한이 있을 수 있습니다.</li>
+                <li>비회원은 회사의 온라인 쇼핑몰에서 상품을 주문 및 결제할 수 있습니다.</li>
+                <li>비회원은 상품 배송, 결제 처리, 고객 응대 등을 위한 최소한의 개인정보를 제공해야 합니다.</li>
+                <li>일부 서비스는 회원 전용 혜택에서 제외될 수 있습니다.</li>
               </ul>
+
               <h3>제3조 (개인정보 수집 및 이용)</h3>
               <ul>
-                <li>1. 회사는 비회원의 주문 처리 및 서비스 제공을 위해 필요한 범위 내에서 개인정보를 수집하고 이용합니다.</li>
-                <li>2. 수집 항목: 이름, 연락처, 주소, 이메일, 결제정보 등</li>
-                <li>3. 이용 목적: 주문 확인, 배송 안내, 고객 응대 및 결제 처리 등</li>
-                <li>4. 보유 기간: 전자상거래법 등 관련 법령에 따라 일정 기간 보관 후 파기됩니다.</li>
+                <li>회사는 주문 처리 및 서비스 제공을 위해 필요한 범위 내에서 개인정보를 수집합니다.</li>
+                <li>수집 항목: 이름, 연락처, 주소, 이메일, 결제정보 등</li>
+                <li>이용 목적: 주문 확인, 배송 안내, 고객 응대 및 결제 처리 등</li>
+                <li>보유 기간: 관련 법령에 따라 일정 기간 보관 후 안전하게 파기됩니다.</li>
               </ul>
+
               <h3>제4조 (환불 및 교환)</h3>
               <ul>
-                <li>1. 비회원은 전자상거래법에 따라 상품 수령 후 7일 이내 반품 또는 교환을 요청할 수 있습니다.</li>
-                <li>2. 단, 단순 변심, 상품 훼손, 사용 흔적이 있을 경우 제한될 수 있습니다.</li>
+                <li>상품 수령 후 7일 이내 반품 또는 교환 요청이 가능합니다.</li>
+                <li>단, 상품 훼손 또는 사용 흔적이 있는 경우에는 제한될 수 있습니다.</li>
               </ul>
+
               <h3>제5조 (면책 조항)</h3>
-              <p>회사는 천재지변, 통신 장애, 시스템 오류 등 불가항력 사유로 인해 서비스 제공에 문제가 생길 경우 책임을 지지 않습니다.</p>
+              <p>회사는 천재지변, 통신 장애, 시스템 오류 등 불가항력적인 사유로 인해 서비스 제공에 문제가 발생한 경우 책임을 지지 않습니다.</p>
+
               <h3>제6조 (약관 변경)</h3>
-              <p>회사는 약관을 변경할 수 있으며, 변경 시 사전에 공지합니다. 변경된 약관은 공지 후 즉시 효력이 발생합니다.</p>
-              <p className="guest-modal-contact">(문의: choco@chocohouse.com)</p>
+              <p>회사는 본 약관을 변경할 수 있으며, 변경된 내용은 사전 고지 후 즉시 효력을 가집니다.</p>
+
+              <p className="guest-modal-contact">※ 문의: choco@chocohouse.com</p>
+
               <div className="guest-center-button">
                 <button className="guest-button-agree" onClick={() => setVisibleClause(null)}>동의함</button>
               </div>
