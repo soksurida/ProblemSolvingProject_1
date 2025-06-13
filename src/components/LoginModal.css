@@ -60,3 +60,35 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .login-modal-content {
+    width: 80%;            /* ✅ 너비 줄임 */
+    max-width: 300px;      /* ✅ 절대 최대 제한 */
+    padding: 16px;         /* ✅ 안쪽 여백도 축소 */
+    border-radius: 10px;
+  }
+
+  .login-modal-close {
+    top: 8px;
+    right: 8px;
+    font-size: 20px;
+  }
+
+  .login-modal-actions {
+    flex-direction: column;    /* ✅ 버튼을 세로로 쌓기 */
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .btn {
+    padding: 10px;
+    font-size: 14px;
+    margin: 0;                /* ✅ 간격은 flex gap으로 대체 */
+  }
+
+  .guest-buy {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}

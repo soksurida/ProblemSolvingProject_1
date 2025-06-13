@@ -52,3 +52,44 @@
   margin-top: 20px;
   font-size: 18px;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 24px 20px; /* ✅ 안쪽 여백 축소 */
+    font-size: 13px;
+  }
+
+  .inquiry-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px; /* ✅ 좌우 여백 축소 */
+    text-align: left;
+  }
+
+  .inquiry-box h3 {
+    font-size: 18px;
+  }
+
+  .inquiry-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;          /* ✅ 줄바꿈 허용 */
+    gap: 16px;
+    margin: 20px 0 16px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+
+  .footer-icons {
+    justify-content: center;  /* ✅ 중앙 정렬 */
+    gap: 12px;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+}

@@ -194,3 +194,92 @@
   margin-top: -18px;       /* ✅ 위로 더 끌어올림 */
   text-align: left;
 }
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .nav-center {
+    display: flex;
+    flex-direction: row;             /* ✅ 한 줄로 정렬 */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px !important;                         /* ✅ 메뉴 사이 간격 */
+    font-size: 14px !important;                /* ✅ 글자 크기 */
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .nav-center span {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    padding: 6px 0;                 /* ✅ 세로 여백 조절 */
+  }
+
+  .search-popup-inner {
+    padding: 20px;
+  }
+
+  .overlay-search-input {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .overlay-search-icon {
+    top: 20px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .search-box-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .search-section h3 {
+    font-size: 16px;
+  }
+
+  .search-section li {
+    font-size: 14px;
+  }
+
+  .search-section.recent-keywords {
+    width: 100%;
+  }
+
+  .clear-all-btn {
+    font-size: 12px;
+    transform: none;
+    margin-bottom: 0;
+  }
+
+  .close-btn {
+    top: 8px;
+    right: 10px;
+    font-size: 16px;
+  }
+
+  .nav-icon-group {
+    margin-top: 14px;
+    gap: 16px;
+  }
+
+  .icon-img,
+  .login-icon {
+    width: 10px;
+    height: 10px;
+  }
+}

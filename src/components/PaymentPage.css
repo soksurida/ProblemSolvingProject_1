@@ -280,3 +280,124 @@ button {
 }
 
 /* 우편번호 팝업 관련 스타일은 위 JSX의 inline style로 처리 */
+
+@media screen and (max-width: 768px) {
+  .payment-wrapper {
+    padding: 20px 0;
+  }
+
+  .payment-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .payment-left,
+  .payment-summary-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .payment-summary-box {
+    position: relative;
+    top: 0;
+    margin-top: 10px;
+    box-shadow: none;
+    padding: 16px;
+  }
+
+  .payment-container {
+    padding: 0 24px;
+  }
+
+  .payment-title {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .payment-form-grid {
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
+
+  .payment-form-grid label {
+    font-size: 0.9rem;
+  }
+
+  .payment-form-grid input,
+  .payment-form-grid select {
+    width: 100%;
+  }
+
+  .payment-methods {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .payment-methods button {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .payment-order-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .payment-section-box {
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+
+  .payment-section-heading {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .memo-container select {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .sender-info-box {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding: 10px 12px;
+  }
+
+  .summary-notice {
+    font-size: 0.75rem;
+    margin-top: 8px;
+  }
+
+  .payment-summary-box .total {
+    font-size: 1rem;
+    padding-top: 8px;
+  }
+
+  .payment-price {
+    font-size: 0.95rem;
+  }
+
+  .payment-meta {
+    font-size: 0.8rem;
+  }
+
+    .payment-summary-box {
+    padding: 16px;
+    margin-top: px;
+    box-shadow: none;
+  }
+
+  .payment-left {
+    padding: 0 4px; /* ✅ 세부 양 옆 조정 */
+  }
+
+  .payment-section-box {
+    padding: 16px 0;
+  }
+
+}
